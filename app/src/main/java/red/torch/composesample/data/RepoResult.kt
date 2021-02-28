@@ -15,11 +15,7 @@
  */
 package red.torch.composesample.data
 
-data class DogDetailInfo(
-    val title: String,
-    val createdAt: String,
-    val location: String,
-    val features: String,
-    val description: String,
-    val owner: String
-)
+sealed class RepoResult<out T : Any> {
+    data class Success<out T : Any>(val data: T) : RepoResult<T>()
+    data class Error(val throwable: Throwable) : RepoResult<Nothing>()
+}

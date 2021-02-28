@@ -30,13 +30,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
 
-@Preview
 @Composable
-fun DogListHeaderSection() {
+fun DogListHeaderSection(
+    searchTarget: String,
+    searchResultCount: Int,
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -48,7 +49,11 @@ fun DogListHeaderSection() {
             modifier = Modifier.fillMaxSize()
         ) {
             Text(
-                stringResource(id = R.string.dog_list_search_result),
+                stringResource(
+                    id = R.string.dog_list_search_result,
+                    searchTarget,
+                    searchResultCount
+                ),
                 style = MaterialTheme.typography.body2,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onBackground

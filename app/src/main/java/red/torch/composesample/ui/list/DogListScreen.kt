@@ -23,36 +23,44 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import red.torch.composesample.data.repository.DogListInfo
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun DogListContentsSection(
-    feedItems: List<String>,
-    onSelected: (String) -> Unit
+fun DogListScreen(
+    viewModel: DogListViewModel,
 ) {
+    val dogListInfo = viewModel.dogListInfo.observeAsState(DogListInfo("", emptyList()))
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
     ) {
+        if (dogListInfo.value.groups.isEmpty()) {
+            return@LazyColumn
+        }
 
         // Search Bar Mock
         item {
             Spacer(Modifier.height(4.dp))
-            DogListHeaderSection()
+            DogListHeaderSection(dogListInfo.value.target, dogListInfo.value.totalCount)
         }
 
-        for (i in 0 until 30) {
-            if (i % 8 == 0) {
-                stickyHeader {
-                    DogListDateHeader()
-                }
+        // List
+        dogListInfo.value.groups.forEach { group ->
+            stickyHeader {
+                DogListDateHeader(group.label)
             }
 
-            item {
-                DogListContentsItem("") {
+            group.dogSimpleInfos.forEach { dogSimpleInfo ->
+                item {
+                    DogListContentsItem(dogSimpleInfo) { position ->
+                        viewModel.select(position)
+                    }
                 }
             }
         }

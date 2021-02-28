@@ -15,21 +15,37 @@
  */
 package red.torch.composesample.ui.list
 
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
-import red.torch.composesample.data.DogSimpleInfo
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import red.torch.composesample.data.RepoResult
+import red.torch.composesample.data.repository.DogListInfo
+import red.torch.composesample.data.repository.DogRepository
+import javax.inject.Inject
 
-class DogListViewModel : ViewModel() {
+@HiltViewModel
+class DogListViewModel @Inject constructor(
+    private val dogRepository: DogRepository,
+) : ViewModel() {
 
-    private val _dogs: MutableLiveData<List<DogSimpleInfo>> = MutableLiveData()
-    val dogs: LiveData<List<DogSimpleInfo>>
-        get() = _dogs
+    private val _dogListInfo: MutableLiveData<DogListInfo> = MutableLiveData()
+    val dogListInfo: LiveData<DogListInfo>
+        get() = _dogListInfo
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreate() {
-        _dogs.value = emptyList()
+    fun fetchDogList() {
+        viewModelScope.launch {
+            when (val result = dogRepository.getList()) {
+                is RepoResult.Success -> {
+                    _dogListInfo.value = result.data
+                }
+            }
+        }
+    }
+
+    fun select(id: Int) {
+        //
     }
 }

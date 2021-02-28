@@ -13,11 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composesample.data
+package red.torch.composesample.di
 
-data class DogSimpleInfo(
-    val title: String,
-    val createdAt: String,
-    val location: String,
-    val features: String,
-)
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import red.torch.composesample.data.repository.DogRepository
+import red.torch.composesample.data.repository.DogRepositoryMock
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+class RepositoryModule {
+    @Provides
+    @Singleton
+    open fun provideDogRepository(): DogRepository {
+        // Mock
+        return DogRepositoryMock()
+    }
+}

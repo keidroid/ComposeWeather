@@ -17,22 +17,30 @@ package red.torch.composesample.ui.list
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Scaffold
+import dagger.hilt.android.AndroidEntryPoint
 import red.torch.composesample.ui.common.DogAdaptionTopAppBar
 import red.torch.composesample.ui.theme.MyTheme
 
+@AndroidEntryPoint
 class DogListActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<DogListViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                Column {
-                    DogAdaptionTopAppBar()
-                    DogListContentsSection(emptyList()) {
-                    }
+                Scaffold(
+                    topBar = { DogAdaptionTopAppBar() }
+                ) {
+                    DogListScreen(viewModel)
                 }
             }
         }
+
+        viewModel.fetchDogList()
     }
 }

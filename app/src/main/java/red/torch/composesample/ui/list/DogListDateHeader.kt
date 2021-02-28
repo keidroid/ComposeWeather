@@ -40,7 +40,7 @@ import red.torch.composesample.R
 import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
-fun DogListDateHeader() {
+fun DogListDateHeader(dateString: String) {
     Row(
         horizontalArrangement = Arrangement.End,
         modifier = Modifier
@@ -63,7 +63,7 @@ fun DogListDateHeader() {
                 )
                 Spacer(Modifier.width(4.dp))
                 Text(
-                    "2021年3月31日",
+                    dateString,
                     color = Color.White,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
@@ -77,7 +77,8 @@ fun DogListDateHeader() {
 @Preview
 fun DogListDateHeaderDarkPreview() {
     MyTheme(darkTheme = true) {
-        DogListDateHeader()
+        val state =
+            DogListDateHeader("2021年3月3日")
     }
 }
 
@@ -85,6 +86,6 @@ fun DogListDateHeaderDarkPreview() {
 @Preview
 fun DogListDateHeaderLightPreview() {
     MyTheme(darkTheme = false) {
-        DogListDateHeader()
+        DogListDateHeader("2021年12月31日")
     }
 }
