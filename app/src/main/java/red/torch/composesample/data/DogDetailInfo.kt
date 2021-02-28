@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge
+package red.torch.composesample.data
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    // Add unit tests here
-}
+data class DogDetailInfo(
+    val title: String,
+    val createdAt: String,
+    val location: String,
+    val features: String,
+    val description: String,
+    val owner: String
+)
