@@ -28,7 +28,7 @@ import red.torch.composesample.ui.list.DogListScreen
 import red.torch.composesample.ui.list.DogListViewModel
 
 @Composable
-fun NavigationGraph(
+fun NavGraph(
     dogListViewModel: DogListViewModel = viewModel(),
     dogDetailViewModel: DogDetailViewModel = viewModel()
 ) {
