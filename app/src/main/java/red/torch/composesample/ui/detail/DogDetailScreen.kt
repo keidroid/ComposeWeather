@@ -16,20 +16,25 @@
 package red.torch.composesample.ui.detail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import red.torch.composesample.data.repository.DogDetailInfo
+import androidx.navigation.compose.rememberNavController
 import red.torch.composesample.ui.common.DogAdaptionTopAppBar
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogDetailScreen(
@@ -37,25 +42,39 @@ fun DogDetailScreen(
     dogId: Int,
     viewModel: DogDetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    val dogDetailInfo = viewModel.dogDetailInfo.observeAsState(DogDetailInfo())
+    val dogDetailInfoState = viewModel.dogDetailInfo.observeAsState(null)
+    viewModel.fetchDogDetail(dogId)
 
     Scaffold(
         topBar = { DogAdaptionTopAppBar() }
     ) {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colors.background)
-        ) {
+        dogDetailInfoState.value?.also { dogDetailInfo ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colors.background)
+            ) {
+                // Search Bar Mock
+                item {
+                    Spacer(Modifier.height(4.dp))
+                }
 
-            // Search Bar Mock
-            item {
-                Spacer(Modifier.height(4.dp))
+                item {
+                    Text("Hello Detail: $dogId")
+                }
             }
-
-            item {
-                Text("Hello Detail: $dogId")
+        } ?: run {
+            Box(modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator(Modifier.align(Alignment.Center))
             }
         }
+    }
+}
+
+@Composable
+@Preview
+fun DogDetailScreenDarkPreview() {
+    MyTheme(darkTheme = true) {
+        DogDetailScreen(rememberNavController(), 1)
     }
 }

@@ -17,19 +17,21 @@ package red.torch.composesample.ui.list
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
-import red.torch.composesample.data.repository.DogListInfo
 import red.torch.composesample.ui.common.DogAdaptionTopAppBar
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -38,39 +40,41 @@ fun DogListScreen(
     navController: NavController,
     viewModel: DogListViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    val dogListInfo = viewModel.dogListInfo.observeAsState(DogListInfo("", emptyList()))
+    val dogListInfoState = viewModel.dogListInfo.observeAsState(null)
+    viewModel.fetchDogList()
 
     Scaffold(
         topBar = { DogAdaptionTopAppBar() }
     ) {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colors.background)
-        ) {
-            if (dogListInfo.value.groups.isEmpty()) {
-                return@LazyColumn
-            }
+        dogListInfoState.value?.also { dogListInfo ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colors.background)
+            ) {
 
-            // Search Bar Mock
-            item {
-                Spacer(Modifier.height(4.dp))
-                DogListHeaderSection(dogListInfo.value.target, dogListInfo.value.totalCount)
-            }
-
-            // List
-            dogListInfo.value.groups.forEach { group ->
-                stickyHeader {
-                    DogListDateHeader(group.label)
+                item {
+                    Spacer(Modifier.height(4.dp))
+                    DogListHeaderSection(dogListInfo.target, dogListInfo.totalCount)
                 }
 
-                group.dogSimpleInfos.forEach { dogSimpleInfo ->
-                    item {
-                        DogListContentsItem(dogSimpleInfo) { dogId ->
-                            navController.navigate("detail/$dogId")
+                dogListInfo.groups.forEach { group ->
+                    stickyHeader {
+                        DogListDateHeader(group.label)
+                    }
+
+                    group.dogSimpleInfos.forEach { dogSimpleInfo ->
+                        item {
+                            DogListContentsItem(dogSimpleInfo) { dogId ->
+                                navController.navigate("detail/$dogId")
+                            }
                         }
                     }
                 }
+            }
+        } ?: run {
+            Box(modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator(Modifier.align(Alignment.Center))
             }
         }
     }

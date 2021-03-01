@@ -35,7 +35,7 @@ class DogListViewModel @Inject constructor(
     val dogListInfo: LiveData<DogListInfo>
         get() = _dogListInfo
 
-    init {
+    fun fetchDogList() {
         viewModelScope.launch {
             when (val result = dogRepository.getList()) {
                 is RepoResult.Success -> {

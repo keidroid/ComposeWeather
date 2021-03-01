@@ -27,12 +27,12 @@ interface DogRepository {
 
 data class DogDetailInfo(
     val id: Int = 0,
-    val title: String = "",
-    val createdAt: String = "",
-    val location: String = "",
-    val features: String = "",
-    val description: String = "",
-    val owner: String = "",
+    val title: String,
+    val createdAt: String,
+    val location: String,
+    val features: String,
+    val description: String,
+    val owner: String,
 )
 
 data class DogListInfo(
