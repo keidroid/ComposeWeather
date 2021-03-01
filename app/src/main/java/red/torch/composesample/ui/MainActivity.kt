@@ -13,34 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composesample.ui.list
+package red.torch.composesample.ui
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Scaffold
 import dagger.hilt.android.AndroidEntryPoint
-import red.torch.composesample.ui.common.DogAdaptionTopAppBar
 import red.torch.composesample.ui.theme.MyTheme
 
 @AndroidEntryPoint
-class DogListActivity : AppCompatActivity() {
-
-    private val viewModel by viewModels<DogListViewModel>()
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                Scaffold(
-                    topBar = { DogAdaptionTopAppBar() }
-                ) {
-                    DogListScreen(viewModel)
-                }
+                NavigationGraph()
             }
         }
-
-        viewModel.fetchDogList()
     }
 }

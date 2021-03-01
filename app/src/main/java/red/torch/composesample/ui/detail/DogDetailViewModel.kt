@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composesample.ui.list
+package red.torch.composesample.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,24 +22,24 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import red.torch.composesample.data.RepoResult
-import red.torch.composesample.data.repository.DogListInfo
+import red.torch.composesample.data.repository.DogDetailInfo
 import red.torch.composesample.data.repository.DogRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class DogListViewModel @Inject constructor(
+class DogDetailViewModel @Inject constructor(
     private val dogRepository: DogRepository,
 ) : ViewModel() {
 
-    private val _dogListInfo: MutableLiveData<DogListInfo> = MutableLiveData()
-    val dogListInfo: LiveData<DogListInfo>
-        get() = _dogListInfo
+    private val _dogDetailInfo: MutableLiveData<DogDetailInfo> = MutableLiveData()
+    val dogDetailInfo: LiveData<DogDetailInfo>
+        get() = _dogDetailInfo
 
-    init {
+    fun fetchDogDetail(dogId: Int) {
         viewModelScope.launch {
-            when (val result = dogRepository.getList()) {
+            when (val result = dogRepository.getDetail(dogId)) {
                 is RepoResult.Success -> {
-                    _dogListInfo.value = result.data
+                    _dogDetailInfo.value = result.data
                 }
             }
         }

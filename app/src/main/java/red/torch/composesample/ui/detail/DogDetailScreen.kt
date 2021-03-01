@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composesample.ui.list
+package red.torch.composesample.ui.detail
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,22 +22,22 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.navigate
-import red.torch.composesample.data.repository.DogListInfo
+import red.torch.composesample.data.repository.DogDetailInfo
 import red.torch.composesample.ui.common.DogAdaptionTopAppBar
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun DogListScreen(
+fun DogDetailScreen(
     navController: NavController,
-    viewModel: DogListViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    dogId: Int,
+    viewModel: DogDetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    val dogListInfo = viewModel.dogListInfo.observeAsState(DogListInfo("", emptyList()))
+    val dogDetailInfo = viewModel.dogDetailInfo.observeAsState(DogDetailInfo())
 
     Scaffold(
         topBar = { DogAdaptionTopAppBar() }
@@ -48,29 +47,14 @@ fun DogListScreen(
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
         ) {
-            if (dogListInfo.value.groups.isEmpty()) {
-                return@LazyColumn
-            }
 
             // Search Bar Mock
             item {
                 Spacer(Modifier.height(4.dp))
-                DogListHeaderSection(dogListInfo.value.target, dogListInfo.value.totalCount)
             }
 
-            // List
-            dogListInfo.value.groups.forEach { group ->
-                stickyHeader {
-                    DogListDateHeader(group.label)
-                }
-
-                group.dogSimpleInfos.forEach { dogSimpleInfo ->
-                    item {
-                        DogListContentsItem(dogSimpleInfo) { dogId ->
-                            navController.navigate("detail/$dogId")
-                        }
-                    }
-                }
+            item {
+                Text("Hello Detail: $dogId")
             }
         }
     }
