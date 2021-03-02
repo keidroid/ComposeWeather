@@ -1,4 +1,4 @@
-# Put title of your app here
+# DOG ADAPTION
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
@@ -8,7 +8,7 @@
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
 Dog adaption app that seems to be in Japan
-日本にありそうな犬の養子縁組アプリ
+日本でありそうな犬の養子縁組アプリ
 
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
