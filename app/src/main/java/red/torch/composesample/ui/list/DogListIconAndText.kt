@@ -22,7 +22,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,7 +42,7 @@ fun DogListIconAndText(drawableResId: Int, text: String) {
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(4.dp))
-                .background(MaterialTheme.colors.onSurface.copy(0.25f))
+                .background(colors.onSurface.copy(0.25f))
         ) {
             Image(
                 painter = painterResource(id = drawableResId),
@@ -54,8 +55,8 @@ fun DogListIconAndText(drawableResId: Int, text: String) {
 
         Text(
             text,
-            color = MaterialTheme.colors.onSurface.copy(0.5f),
-            style = MaterialTheme.typography.body2,
+            color = colors.onSurface.copy(0.5f),
+            style = typography.body2,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(4.dp)
         )
@@ -77,4 +78,3 @@ fun DogListMarkTextLightPreview() {
         DogListIconAndText(R.drawable.ic_baseline_location_on_24, "東京都")
     }
 }
-

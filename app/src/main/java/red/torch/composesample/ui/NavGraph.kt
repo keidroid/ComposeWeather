@@ -23,8 +23,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import red.torch.composesample.ui.detail.DogDetailScreen
-import red.torch.composesample.viewmodel.DogDetailViewModel
 import red.torch.composesample.ui.list.DogListScreen
+import red.torch.composesample.viewmodel.DogDetailViewModel
 import red.torch.composesample.viewmodel.DogListViewModel
 
 @Composable

@@ -18,35 +18,24 @@ package red.torch.composesample.ui.detail
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -84,11 +73,12 @@ fun DogDetailScreen(
                             contentScale = ContentScale.Crop,
                         )
 
-                        Box(modifier = Modifier
-                            .padding(16.dp)
-                            .clip(CircleShape)
-                            .background(Color.Black.copy(0.25f))
-                            .clickable { navController.popBackStack() }
+                        Box(
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .clip(CircleShape)
+                                .background(Color.Black.copy(0.25f))
+                                .clickable { navController.popBackStack() }
                         ) {
                             Image(
                                 painter = painterResource(R.drawable.ic_baseline_arrow_back_24),
@@ -100,40 +90,12 @@ fun DogDetailScreen(
                 }
 
                 item {
-                    Surface {
-                        Column(modifier = Modifier.fillMaxWidth()) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier
-                                    .padding(16.dp)
-                                    .fillMaxWidth(),
-                            ) {
-
-                                Text(
-                                    text = "掲載期間: 2021年3月3日まで",
-                                    style = typography.body2,
-                                    fontWeight = FontWeight.Bold
-                                )
-
-                                Spacer(modifier = Modifier.weight(1f))
-
-                                Image(
-                                    painter = painterResource(R.drawable.ic_baseline_favorite_border_24),
-                                    contentDescription = stringResource(R.string.common_favorite),
-                                    modifier = Modifier
-                                        .padding(8.dp)
-                                        .alpha(0.5f)
-                                        .size(28.dp)
-                                )
-                            }
-                            Text(
-                                text = dog.title,
-                                style = typography.h6,
-                                modifier = Modifier.padding(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 16.dp),
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
+                    DogDetailOverviewSection(dog) {
+                        viewModel.toggleFavorite()
                     }
+                }
+                item {
+                    DogDetailBasicInfoSection(dog)
                 }
             }
         } ?: run {

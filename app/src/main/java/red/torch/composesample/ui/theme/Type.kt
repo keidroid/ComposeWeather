@@ -28,13 +28,16 @@ private val fonts = FontFamily(
 )
 
 val defaultTypography = typographyFromDefaults(
+    // TopBar
     h1 = TextStyle(
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
         fontFamily = fonts
     ),
     h2 = TextStyle(
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        letterSpacing = 0.sp
     ),
     h3 = null,
     h4 = null,
@@ -49,8 +52,8 @@ val defaultTypography = typographyFromDefaults(
         fontSize = 16.sp
     ),
     body1 = TextStyle(
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp
     ),
     body2 = TextStyle(
         fontWeight = FontWeight.Normal,

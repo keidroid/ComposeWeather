@@ -19,4 +19,13 @@
     <string name="dog_list_sort_separator">|</string>
     <string name="dog_list_sort_created_date">新着順</string>
     <string name="dog_list_sort_name">名前順</string>
+
+    <string name="dog_detail_basic_info_title">基本情報</string>
+    <string name="dog_detail_basic_info_location">現在所在地</string>
+    <string name="dog_detail_basic_info_type">種類</string>
+    <string name="dog_detail_basic_info_age">年齢</string>
+    <string name="dog_detail_basic_info_gender">性別</string>
+    <string name="dog_detail_basic_info_size">サイズ</string>
+    <string name="dog_detail_basic_info_vaccine">ワクチン</string>
+
 </resources>

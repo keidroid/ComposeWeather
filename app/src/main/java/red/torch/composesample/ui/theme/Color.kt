@@ -23,9 +23,17 @@ val teal200 = Color(0xFF03DAC5)
 val teal500 = Color(0xFF009688)
 val teal700 = Color(0xFF018786)
 
+val red200 = Color(0xFFEF9A9A)
+val red500 = Color(0xFFF44336)
+val red700 = Color(0xFFD32F2F)
+
+val PrimaryLight = teal200
 val Primary = teal500
-val PrimaryLight = teal700
-val PrimaryDark = teal200
+val PrimaryDark = teal700
+
+val SecondaryLight = red200
+val Secondary = red500
+val SecondaryDark = red700
 
 val OnBackgroundDark = Color(0xFFFCF8F8)
 val OnBackgroundLight = Color(0xFF3C3838)
@@ -34,9 +42,10 @@ val SmokeDark = Color(0x08000000)
 val SmokeLight = Color(0x08FFFFFF)
 
 val DarkColors = darkColors(
-    primary = PrimaryDark,
-    primaryVariant = PrimaryLight,
-    secondary = teal700,
+    primary = Primary,
+    primaryVariant = PrimaryDark,
+    secondary = SecondaryDark,
+    secondaryVariant = SecondaryDark,
     background = SmokeLight,
     onBackground = OnBackgroundDark,
 )
@@ -44,7 +53,8 @@ val DarkColors = darkColors(
 val LightColors = lightColors(
     primary = Primary,
     primaryVariant = PrimaryLight,
-    secondary = teal700,
+    secondary = Secondary,
+    secondaryVariant = SecondaryLight,
     background = SmokeDark,
     onBackground = OnBackgroundLight,
 )

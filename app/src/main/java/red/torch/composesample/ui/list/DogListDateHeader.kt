@@ -25,7 +25,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -50,7 +50,7 @@ fun DogListDateHeader(dateString: String) {
         Card(
             elevation = 4.dp,
             shape = RoundedCornerShape(12.dp, 0.dp, 0.dp, 12.dp),
-            backgroundColor = MaterialTheme.colors.secondary
+            backgroundColor = colors.primary
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,

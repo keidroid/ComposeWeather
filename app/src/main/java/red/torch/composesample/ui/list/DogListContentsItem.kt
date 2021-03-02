@@ -65,7 +65,7 @@ fun DogListContentsItem(
 
                     Text(
                         dog.title,
-                        style = MaterialTheme.typography.body1,
+                        style = MaterialTheme.typography.subtitle1,
                         maxLines = 2,
                         fontWeight = FontWeight.Bold,
                         overflow = TextOverflow.Ellipsis,

@@ -35,6 +35,10 @@ class DogDetailViewModel @Inject constructor(
     val dogDetailInfo: LiveData<DogDetailInfo>
         get() = _dogDetailInfo
 
+    private val _isFavorite: MutableLiveData<Boolean> = MutableLiveData()
+    val isFavorite: LiveData<Boolean>
+        get() = _isFavorite
+
     fun fetchDogDetail(dogId: Int) {
         viewModelScope.launch {
             when (val result = dogRepository.getDetail(dogId)) {
@@ -43,5 +47,10 @@ class DogDetailViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun toggleFavorite() {
+        val currentIsFavorite = _isFavorite.value ?: return
+        _isFavorite.value = !currentIsFavorite
     }
 }
