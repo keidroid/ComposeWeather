@@ -39,18 +39,15 @@ val defaultTypography = typographyFromDefaults(
         fontSize = 16.sp,
         letterSpacing = 0.sp
     ),
-    h3 = null,
-    h4 = null,
-    h5 = null,
-    h6 = null,
+    h3 = null, // Unused
+    h4 = null, // Unused
+    h5 = null, // Unused
+    h6 = null, // Unused
     subtitle1 = TextStyle(
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp
     ),
-    subtitle2 = TextStyle(
-        fontWeight = FontWeight.Bold,
-        fontSize = 16.sp
-    ),
+    subtitle2 = null, // Unused
     body1 = TextStyle(
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp
@@ -60,13 +57,11 @@ val defaultTypography = typographyFromDefaults(
         fontSize = 14.sp
     ),
     button = TextStyle(
-        fontWeight = FontWeight.Bold
-    ),
-    caption = TextStyle(
         fontWeight = FontWeight.Bold,
-        fontSize = 12.sp
+        fontSize = 16.sp
     ),
-    overline = null
+    caption = null, // Unused
+    overline = null // Unused
 )
 
 fun typographyFromDefaults(

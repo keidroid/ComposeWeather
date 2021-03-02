@@ -63,8 +63,7 @@ fun DogDetailOverviewSection(
 
                 Text(
                     text = stringResource(R.string.dog_detail_overview_limit_date, dog.limitedAt),
-                    style = typography.body2,
-                    fontWeight = FontWeight.Bold,
+                    style = typography.body1,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
                 )
@@ -126,8 +125,7 @@ fun DogDetailOverviewSection(
                     ) {
                         Text(
                             text = stringResource(R.string.dog_detail_overview_within),
-                            style = typography.body2,
-                            fontWeight = FontWeight.Bold,
+                            style = typography.body1,
                             color = colors.primary,
                             modifier = Modifier.padding(8.dp)
                         )

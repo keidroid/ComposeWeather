@@ -30,7 +30,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
@@ -58,7 +57,6 @@ fun DogListHeaderSection(
                     searchResultCount
                 ),
                 style = typography.body2,
-                fontWeight = FontWeight.Bold,
                 color = colors.onBackground
             )
         }
@@ -69,22 +67,19 @@ fun DogListHeaderSection(
         ) {
             Text(
                 stringResource(id = R.string.dog_list_sort_created_date),
-                style = typography.body2,
-                fontWeight = FontWeight.Bold,
+                style = typography.body1,
                 color = colors.primary
             )
             Spacer(Modifier.width(8.dp))
             Text(
                 stringResource(id = R.string.dog_list_sort_separator),
-                style = typography.body2,
-                fontWeight = FontWeight.Bold,
+                style = typography.body1,
                 color = colors.onBackground.copy(alpha = 0.25f)
             )
             Spacer(Modifier.width(8.dp))
             Text(
                 stringResource(id = R.string.dog_list_sort_name),
-                style = typography.body2,
-                fontWeight = FontWeight.Bold,
+                style = typography.body1,
                 color = colors.onBackground.copy(alpha = 0.25f)
             )
         }

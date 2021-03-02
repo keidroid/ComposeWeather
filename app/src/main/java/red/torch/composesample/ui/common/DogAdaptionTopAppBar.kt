@@ -16,12 +16,11 @@
 package red.torch.composesample.ui.common
 
 import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import red.torch.composesample.R
 import red.torch.composesample.ui.theme.MyTheme
@@ -32,9 +31,7 @@ fun DogAdaptionTopAppBar() {
         title = {
             Text(
                 text = stringResource(R.string.app_name),
-                fontFamily = FontFamily(
-                    Font(R.font.dosis_bold),
-                )
+                style = typography.h1
             )
         },
         backgroundColor = colors.surface,

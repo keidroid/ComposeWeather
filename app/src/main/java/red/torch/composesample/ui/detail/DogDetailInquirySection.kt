@@ -67,7 +67,7 @@ fun DogDetailInquirySection(
                     Text(
                         stringResource(R.string.dog_detail_inquiry_button),
                         color = Color.White,
-                        style = typography.subtitle1
+                        style = typography.button
                     )
                 }
             }

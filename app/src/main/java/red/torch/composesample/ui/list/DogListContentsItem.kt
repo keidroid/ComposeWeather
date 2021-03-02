@@ -29,7 +29,6 @@ import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -69,7 +68,6 @@ fun DogListContentsItem(
                         dog.title,
                         style = typography.subtitle1,
                         maxLines = 2,
-                        fontWeight = FontWeight.Bold,
                         overflow = TextOverflow.Ellipsis,
                     )
 

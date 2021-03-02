@@ -30,7 +30,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
@@ -56,8 +55,7 @@ fun DogListIconAndText(drawableResId: Int, text: String) {
         Text(
             text,
             color = colors.onSurface.copy(0.5f),
-            style = typography.body2,
-            fontWeight = FontWeight.Bold,
+            style = typography.body1,
             modifier = Modifier.padding(4.dp)
         )
     }
