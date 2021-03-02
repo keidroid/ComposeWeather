@@ -31,7 +31,7 @@ import red.torch.composesample.R
 import red.torch.composesample.data.repository.DogDetailInfo
 
 @Composable
-fun DogDetailBasicInfoSection(
+fun DogDetailContributorInfoSection(
     dog: DogDetailInfo
 ) {
     Column(
@@ -43,7 +43,7 @@ fun DogDetailBasicInfoSection(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = stringResource(R.string.dog_detail_basic_info_title),
+            text = stringResource(R.string.dog_detail_contributor_info_title),
             style = MaterialTheme.typography.body1,
         )
     }
@@ -53,29 +53,21 @@ fun DogDetailBasicInfoSection(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            DogDetailTextColumn(
-                stringResource(R.string.dog_detail_basic_info_location),
-                dog.location,
+            DogDetailContributorColumn(
+                dog.contributor
             )
-            DogDetailTextColumn(
-                stringResource(R.string.dog_detail_basic_info_type),
-                dog.type,
+
+            DogDetailTextAreaColumn(
+                stringResource(R.string.dog_detail_basic_info_reason),
+                dog.reason,
             )
-            DogDetailTextColumn(
-                stringResource(R.string.dog_detail_basic_info_age),
-                dog.age,
+            DogDetailTextAreaColumn(
+                stringResource(R.string.dog_detail_basic_info_personality),
+                dog.personality,
             )
-            DogDetailTextColumn(
-                stringResource(R.string.dog_detail_basic_info_gender),
-                dog.gender,
-            )
-            DogDetailTextColumn(
-                stringResource(R.string.dog_detail_basic_info_size),
-                dog.size,
-            )
-            DogDetailTextColumn(
-                stringResource(R.string.dog_detail_basic_info_vaccine),
-                dog.vaccine,
+            DogDetailTextAreaColumn(
+                stringResource(R.string.dog_detail_basic_info_recommend),
+                dog.recommend,
             )
         }
     }

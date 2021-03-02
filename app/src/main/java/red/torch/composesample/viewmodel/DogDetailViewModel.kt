@@ -53,4 +53,8 @@ class DogDetailViewModel @Inject constructor(
         val currentIsFavorite = _isFavorite.value ?: return
         _isFavorite.value = !currentIsFavorite
     }
+
+    fun inquiry() {
+        // TODO :
+    }
 }

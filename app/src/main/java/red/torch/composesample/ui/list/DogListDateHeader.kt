@@ -77,8 +77,7 @@ fun DogListDateHeader(dateString: String) {
 @Preview
 fun DogListDateHeaderDarkPreview() {
     MyTheme(darkTheme = true) {
-        val state =
-            DogListDateHeader("2021年3月3日")
+        DogListDateHeader("2021年3月3日")
     }
 }
 

@@ -40,10 +40,16 @@ data class DogDetailInfo(
     val size: String,
     val vaccine: String,
     val features: String,
-    val owner: String,
+    val contributor: ContributorInfo,
     val reason: String,
     val personality: String,
     val recommend: String,
+)
+
+data class ContributorInfo(
+    val id: Int,
+    val thumbnailUrl: String,
+    val name: String,
 )
 
 data class DogListInfo(
@@ -409,7 +415,11 @@ class DogRepositoryMock(
                     size = "小型犬",
                     vaccine = "接種済み",
                     features = target.features,
-                    owner = "keidroid",
+                    contributor = ContributorInfo(
+                        123701,
+                        "https://torch.red/compose_mock/contributor_01.jpg",
+                        "keidroid"
+                    ),
                     reason = "保健所から引き取りました。",
                     personality = "人なつっこく、活発な性格です。お菓子を持っていくとしっぽを振ってやってきます。お散歩が大好きです。",
                     recommend = "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。\n" +

@@ -28,9 +28,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DogDetailBasicInfoColumn(
-    key: String,
-    value: String,
+fun DogDetailTextColumn(
+    label: String,
+    text: String,
 ) {
     Row(
         Modifier
@@ -38,18 +38,17 @@ fun DogDetailBasicInfoColumn(
             .padding(vertical = 8.dp)
     ) {
         Text(
-            text = key,
+            text = label,
             style = MaterialTheme.typography.body1,
             modifier = Modifier
                 .weight(1f)
                 .alpha(0.75f),
         )
         Text(
-            text = value,
+            text = text,
             style = MaterialTheme.typography.body2,
             modifier = Modifier
                 .weight(2f)
-                .alpha(0.75f),
         )
     }
 

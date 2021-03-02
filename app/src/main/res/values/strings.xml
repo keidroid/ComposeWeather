@@ -31,4 +31,12 @@
     <string name="dog_detail_basic_info_size">サイズ</string>
     <string name="dog_detail_basic_info_vaccine">ワクチン</string>
 
+    <string name="dog_detail_contributor_info_title">投稿者情報</string>
+    <string name="dog_detail_basic_info_reason">募集理由</string>
+    <string name="dog_detail_basic_info_personality">性格・健康状態</string>
+    <string name="dog_detail_basic_info_recommend">推薦文</string>
+
+    <string name="dog_detail_contributor_info_id">投稿者ID: %d</string>
+    <string name="dog_detail_inquiry_button">里親を申し出る</string>
+
 </resources>
