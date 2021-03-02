@@ -31,6 +31,8 @@ data class DogDetailInfo(
     val title: String,
     val createdAt: String,
     val limitedAt: String,
+    val pageView: Int,
+    val favoriteCount: Int,
     val location: String,
     val type: String,
     val age: String,
@@ -38,8 +40,10 @@ data class DogDetailInfo(
     val size: String,
     val vaccine: String,
     val features: String,
-    val description: String,
     val owner: String,
+    val reason: String,
+    val personality: String,
+    val recommend: String,
 )
 
 data class DogListInfo(
@@ -396,6 +400,8 @@ class DogRepositoryMock(
                     title = target.title,
                     createdAt = "2021年3月3日",
                     limitedAt = "2021年3月9日",
+                    pageView = 2702,
+                    favoriteCount = 48,
                     location = target.location,
                     type = "雑種",
                     age = "1歳6ヶ月",
@@ -403,8 +409,11 @@ class DogRepositoryMock(
                     size = "小型犬",
                     vaccine = "接種済み",
                     features = target.features,
-                    description = "",
-                    owner = "keidroid"
+                    owner = "keidroid",
+                    reason = "保健所から引き取りました。",
+                    personality = "人なつっこく、活発な性格です。お菓子を持っていくとしっぽを振ってやってきます。お散歩が大好きです。",
+                    recommend = "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。\n" +
+                        "またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。",
                 )
             )
         }

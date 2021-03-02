@@ -20,6 +20,9 @@
     <string name="dog_list_sort_created_date">新着順</string>
     <string name="dog_list_sort_name">名前順</string>
 
+    <string name="dog_detail_overview_limit_date">掲載期間: %sまで</string>
+    <string name="dog_detail_overview_within">里親募集中</string>
+
     <string name="dog_detail_basic_info_title">基本情報</string>
     <string name="dog_detail_basic_info_location">現在所在地</string>
     <string name="dog_detail_basic_info_type">種類</string>

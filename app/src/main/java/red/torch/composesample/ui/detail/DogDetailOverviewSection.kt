@@ -60,7 +60,7 @@ fun DogDetailOverviewSection(
             ) {
 
                 Text(
-                    text = "掲載期間: 2021年3月3日まで",
+                    text = stringResource(R.string.dog_detail_overview_limit_date, dog.limitedAt),
                     style = MaterialTheme.typography.body2,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
@@ -118,7 +118,7 @@ fun DogDetailOverviewSection(
                             .background(MaterialTheme.colors.onPrimary.copy(0.95f))
                     ) {
                         Text(
-                            text = "里親募集中",
+                            text = stringResource(R.string.dog_detail_overview_within),
                             style = MaterialTheme.typography.body2,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colors.primary,
@@ -151,7 +151,7 @@ fun DogDetailOverviewSection(
                     )
 
                     Text(
-                        text = "2702",
+                        text = dog.pageView.toString(),
                         style = MaterialTheme.typography.h2,
                         color = MaterialTheme.colors.onSurface.copy(0.5f)
                     )
@@ -179,7 +179,7 @@ fun DogDetailOverviewSection(
                     )
 
                     Text(
-                        text = "48",
+                        text = dog.favoriteCount.toString(),
                         style = MaterialTheme.typography.h2,
                         color = MaterialTheme.colors.onSurface.copy(0.5f),
                     )
