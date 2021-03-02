@@ -16,7 +16,6 @@
 package red.torch.composesample.ui.detail
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,7 +27,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -61,7 +59,6 @@ fun DogDetailContributorColumn(
             fadeIn = true,
             modifier = Modifier
                 .size(thumbnailSize)
-                .background(colors.background)
                 .clip(CircleShape),
             contentScale = ContentScale.Crop,
             loading = {
