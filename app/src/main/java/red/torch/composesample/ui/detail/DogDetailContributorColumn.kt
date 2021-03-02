@@ -54,7 +54,6 @@ fun DogDetailContributorColumn(
         Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
-            .clip(CircleShape)
     ) {
         GlideImage(
             data = contributorInfo.thumbnailUrl,
@@ -62,7 +61,8 @@ fun DogDetailContributorColumn(
             fadeIn = true,
             modifier = Modifier
                 .size(thumbnailSize)
-                .background(colors.background),
+                .background(colors.background)
+                .clip(CircleShape),
             contentScale = ContentScale.Crop,
             loading = {
                 Box(contentAlignment = Alignment.Center) {
