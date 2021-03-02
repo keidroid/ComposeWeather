@@ -30,9 +30,10 @@ private val fonts = FontFamily(
 val defaultTypography = typographyFromDefaults(
     // TopBar
     h1 = TextStyle(
+        fontFamily = fonts,
+        fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
-        fontSize = 16.sp,
-        fontFamily = fonts
+        letterSpacing = 0.sp,
     ),
     h2 = TextStyle(
         fontWeight = FontWeight.Bold,

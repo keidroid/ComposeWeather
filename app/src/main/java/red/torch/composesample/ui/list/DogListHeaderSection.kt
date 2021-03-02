@@ -56,7 +56,7 @@ fun DogListHeaderSection(
                     searchTarget,
                     searchResultCount
                 ),
-                style = typography.body2,
+                style = typography.body1,
                 color = colors.onBackground
             )
         }
