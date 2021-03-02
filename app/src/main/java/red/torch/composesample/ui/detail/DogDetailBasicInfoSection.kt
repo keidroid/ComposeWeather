@@ -20,7 +20,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -44,7 +44,7 @@ fun DogDetailBasicInfoSection(
 
         Text(
             text = stringResource(R.string.dog_detail_basic_info_title),
-            style = MaterialTheme.typography.body1,
+            style = typography.body1,
         )
     }
     Surface(modifier = Modifier.fillMaxWidth()) {

@@ -21,7 +21,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -42,7 +42,7 @@ fun DogDetailTextAreaColumn(
     ) {
         Text(
             text = label,
-            style = MaterialTheme.typography.body1,
+            style = typography.body1,
             modifier = Modifier.alpha(0.75f),
         )
 
@@ -50,7 +50,7 @@ fun DogDetailTextAreaColumn(
 
         Text(
             text = text,
-            style = MaterialTheme.typography.body2,
+            style = typography.body2,
         )
     }
 

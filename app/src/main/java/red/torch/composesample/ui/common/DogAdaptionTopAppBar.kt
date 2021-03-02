@@ -15,7 +15,7 @@
  */
 package red.torch.composesample.ui.common
 
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -37,8 +37,8 @@ fun DogAdaptionTopAppBar() {
                 )
             )
         },
-        backgroundColor = MaterialTheme.colors.surface,
-        contentColor = MaterialTheme.colors.onSurface,
+        backgroundColor = colors.surface,
+        contentColor = colors.onSurface,
     )
 }
 

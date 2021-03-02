@@ -25,7 +25,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
@@ -58,7 +58,7 @@ fun DogDetailScreen(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colors.background)
+                    .background(colors.background)
             ) {
                 item {
                     Box {
@@ -68,7 +68,7 @@ fun DogDetailScreen(
                             fadeIn = false,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .background(MaterialTheme.colors.background),
+                                .background(colors.background),
                             contentScale = ContentScale.Crop,
                         )
 

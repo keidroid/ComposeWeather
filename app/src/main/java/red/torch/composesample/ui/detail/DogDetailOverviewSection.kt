@@ -32,7 +32,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -62,7 +63,7 @@ fun DogDetailOverviewSection(
 
                 Text(
                     text = stringResource(R.string.dog_detail_overview_limit_date, dog.limitedAt),
-                    style = MaterialTheme.typography.body2,
+                    style = typography.body2,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
@@ -92,7 +93,7 @@ fun DogDetailOverviewSection(
 
             Text(
                 text = dog.title,
-                style = MaterialTheme.typography.h6,
+                style = typography.h6,
                 modifier = Modifier.padding(
                     start = 16.dp,
                     top = 0.dp,
@@ -112,7 +113,7 @@ fun DogDetailOverviewSection(
                     modifier = Modifier
                         .padding(8.dp)
                         .clip(RoundedCornerShape(percent = 50))
-                        .background(MaterialTheme.colors.primary)
+                        .background(colors.primary)
                         .weight(2f)
                 ) {
                     Box(
@@ -121,13 +122,13 @@ fun DogDetailOverviewSection(
                             .fillMaxSize()
                             .padding(2.dp)
                             .clip(RoundedCornerShape(percent = 50))
-                            .background(MaterialTheme.colors.onPrimary.copy(0.95f))
+                            .background(colors.onPrimary.copy(0.95f))
                     ) {
                         Text(
                             text = stringResource(R.string.dog_detail_overview_within),
-                            style = MaterialTheme.typography.body2,
+                            style = typography.body2,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colors.primary,
+                            color = colors.primary,
                             modifier = Modifier.padding(8.dp)
                         )
                     }
@@ -151,8 +152,8 @@ fun DogDetailOverviewSection(
 
                     Text(
                         text = dog.pageView.toString(),
-                        style = MaterialTheme.typography.h2,
-                        color = MaterialTheme.colors.onSurface.copy(0.5f)
+                        style = typography.h2,
+                        color = colors.onSurface.copy(0.5f)
                     )
                 }
 
@@ -173,8 +174,8 @@ fun DogDetailOverviewSection(
                     )
                     Text(
                         text = dog.favoriteCount.toString(),
-                        style = MaterialTheme.typography.h2,
-                        color = MaterialTheme.colors.onSurface.copy(0.5f),
+                        style = typography.h2,
+                        color = colors.onSurface.copy(0.5f),
                     )
                 }
                 VerticalDivider()

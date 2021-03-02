@@ -23,7 +23,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -56,9 +57,9 @@ fun DogListHeaderSection(
                     searchTarget,
                     searchResultCount
                 ),
-                style = MaterialTheme.typography.body2,
+                style = typography.body2,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colors.onBackground
+                color = colors.onBackground
             )
         }
         Row(
@@ -68,23 +69,23 @@ fun DogListHeaderSection(
         ) {
             Text(
                 stringResource(id = R.string.dog_list_sort_created_date),
-                style = MaterialTheme.typography.body2,
+                style = typography.body2,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colors.primary
+                color = colors.primary
             )
             Spacer(Modifier.width(8.dp))
             Text(
                 stringResource(id = R.string.dog_list_sort_separator),
-                style = MaterialTheme.typography.body2,
+                style = typography.body2,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colors.onBackground.copy(alpha = 0.25f)
+                color = colors.onBackground.copy(alpha = 0.25f)
             )
             Spacer(Modifier.width(8.dp))
             Text(
                 stringResource(id = R.string.dog_list_sort_name),
-                style = MaterialTheme.typography.body2,
+                style = typography.body2,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colors.onBackground.copy(alpha = 0.25f)
+                color = colors.onBackground.copy(alpha = 0.25f)
             )
         }
     }
