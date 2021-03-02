@@ -73,16 +73,16 @@ fun DogListDateHeader(dateString: String) {
     }
 }
 
+@Preview("Dark Theme")
 @Composable
-@Preview
 fun DogListDateHeaderDarkPreview() {
     MyTheme(darkTheme = true) {
         DogListDateHeader("2021年3月3日")
     }
 }
 
+@Preview("Light Theme")
 @Composable
-@Preview
 fun DogListDateHeaderLightPreview() {
     MyTheme(darkTheme = false) {
         DogListDateHeader("2021年12月31日")

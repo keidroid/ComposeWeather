@@ -77,8 +77,8 @@ fun DogDetailInquirySection(
     }
 }
 
+@Preview("Dark Theme")
 @Composable
-@Preview
 fun DogDetailInquirySectionDarkPreview() {
     MyTheme(darkTheme = true) {
         DogDetailInquirySection {
@@ -86,8 +86,8 @@ fun DogDetailInquirySectionDarkPreview() {
     }
 }
 
+@Preview("Light Theme")
 @Composable
-@Preview
 fun DogDetailInquirySectionLightPreview() {
     MyTheme(darkTheme = false) {
         DogDetailInquirySection {

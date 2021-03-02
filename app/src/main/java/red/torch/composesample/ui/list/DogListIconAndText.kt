@@ -63,16 +63,16 @@ fun DogListIconAndText(drawableResId: Int, text: String) {
     }
 }
 
+@Preview("Dark Theme")
 @Composable
-@Preview
 fun DogListMarkTextDarkPreview() {
     MyTheme(darkTheme = true) {
         DogListIconAndText(R.drawable.ic_baseline_location_on_24, "東京都")
     }
 }
 
+@Preview("Light Theme")
 @Composable
-@Preview
 fun DogListMarkTextLightPreview() {
     MyTheme(darkTheme = false) {
         DogListIconAndText(R.drawable.ic_baseline_location_on_24, "東京都")

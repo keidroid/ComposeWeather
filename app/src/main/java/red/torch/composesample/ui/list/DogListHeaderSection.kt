@@ -30,8 +30,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogListHeaderSection(
@@ -85,5 +87,21 @@ fun DogListHeaderSection(
                 color = MaterialTheme.colors.onBackground.copy(alpha = 0.25f)
             )
         }
+    }
+}
+
+@Preview("Dark Theme")
+@Composable
+fun DogListHeaderSectionDarkPreview() {
+    MyTheme(darkTheme = true) {
+        DogListHeaderSection("東京都", 234)
+    }
+}
+
+@Preview("Light Theme")
+@Composable
+fun DogListHeaderSectionLightPreview() {
+    MyTheme(darkTheme = false) {
+        DogListHeaderSection("東京都", 234)
     }
 }

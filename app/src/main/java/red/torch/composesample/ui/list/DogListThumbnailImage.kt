@@ -64,16 +64,16 @@ fun DogListThumbnailImage(
     )
 }
 
+@Preview("Dark Theme")
 @Composable
-@Preview
 fun DogListThumbnailImageDarkPreview() {
     MyTheme(darkTheme = true) {
         DogListThumbnailImage("")
     }
 }
 
+@Preview("Light Theme")
 @Composable
-@Preview
 fun DogListThumbnailImageLightPreview() {
     MyTheme(darkTheme = false) {
         DogListThumbnailImage("")

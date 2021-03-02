@@ -50,7 +50,7 @@ class DogDetailViewModel @Inject constructor(
     }
 
     fun toggleFavorite() {
-        val currentIsFavorite = _isFavorite.value ?: return
+        val currentIsFavorite = _isFavorite.value == true
         _isFavorite.value = !currentIsFavorite
     }
 

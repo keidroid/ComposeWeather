@@ -31,9 +31,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
 import red.torch.composesample.data.repository.DogSimpleInfo
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogListContentsItem(
@@ -96,20 +98,34 @@ fun DogListContentsItem(
     }
 }
 
-// @Composable
-// @Preview(widthDp = 360, heightDp = 132)
-// fun DogListContentsItemDarkPreview() {
-//    MyTheme(darkTheme = true) {
-//        DogListContentsItem("yeah") {
-//        }
-//    }
-// }
-//
-// @Composable
-// @Preview(widthDp = 360, heightDp = 132)
-// fun DogListContentsItemLightPreview() {
-//    MyTheme(darkTheme = false) {
-//        DogListContentsItem("yeah") {
-//        }
-//    }
-// }
+@Preview("Dark Theme")
+@Composable
+fun DogListContentsItemDarkPreview() {
+    val dog = DogSimpleInfo(
+        id = 123,
+        thumbnailUrl = "",
+        title = "title",
+        location = "location",
+        features = "features",
+    )
+    MyTheme(darkTheme = true) {
+        DogListContentsItem(dog) {
+        }
+    }
+}
+
+@Preview("Light Theme")
+@Composable
+fun DogListContentsItemLightPreview() {
+    val dog = DogSimpleInfo(
+        id = 123,
+        thumbnailUrl = "https://torch.red/compose_mock/contributor_01.jpg",
+        title = "title",
+        location = "location",
+        features = "features",
+    )
+    MyTheme(darkTheme = false) {
+        DogListContentsItem(dog) {
+        }
+    }
+}

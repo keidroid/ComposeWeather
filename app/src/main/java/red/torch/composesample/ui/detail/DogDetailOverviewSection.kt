@@ -50,6 +50,7 @@ import red.torch.composesample.data.repository.DogDetailInfo
 @Composable
 fun DogDetailOverviewSection(
     dog: DogDetailInfo,
+    isFavorite: Boolean,
     onClickFavorite: () -> Unit,
 ) {
     Surface {
@@ -69,21 +70,26 @@ fun DogDetailOverviewSection(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                // val isFavorite = viewModel.isFavorite.observeAsState(false)
-
                 Box(
                     modifier = Modifier
-                        .padding(16.dp)
+                        .padding(12.dp)
                         .clip(CircleShape)
                         .clickable { onClickFavorite() }
                 ) {
                     Image(
-                        painter = painterResource(R.drawable.ic_baseline_favorite_border_24),
+                        painter = if (isFavorite) {
+                            painterResource(R.drawable.ic_baseline_favorite_24)
+                        } else {
+                            painterResource(R.drawable.ic_baseline_favorite_border_24)
+                        },
                         contentDescription = stringResource(R.string.common_favorite),
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .size(28.dp)
                     )
                 }
             }
+
             Text(
                 text = dog.title,
                 style = MaterialTheme.typography.h6,
@@ -127,14 +133,7 @@ fun DogDetailOverviewSection(
                     }
                 }
 
-                Divider(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .width(1.dp)
-                        .height(48.dp)
-                )
-
-                // val isFavorite = viewModel.isFavorite.observeAsState(false)
+                VerticalDivider()
 
                 Column(
                     verticalArrangement = Arrangement.Bottom,
@@ -145,7 +144,7 @@ fun DogDetailOverviewSection(
                         painter = painterResource(R.drawable.ic_baseline_search_24_primary),
                         contentDescription = stringResource(R.string.common_favorite),
                         modifier = Modifier
-                            .padding(8.dp)
+                            .padding(4.dp)
                             .alpha(0.5f)
                             .size(20.dp)
                     )
@@ -157,12 +156,7 @@ fun DogDetailOverviewSection(
                     )
                 }
 
-                Divider(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .width(1.dp)
-                        .height(48.dp)
-                )
+                VerticalDivider()
 
                 Column(
                     verticalArrangement = Arrangement.Bottom,
@@ -173,27 +167,30 @@ fun DogDetailOverviewSection(
                         painter = painterResource(R.drawable.ic_baseline_favorite_24_primary),
                         contentDescription = stringResource(R.string.common_favorite),
                         modifier = Modifier
-                            .padding(8.dp)
+                            .padding(4.dp)
                             .alpha(0.5f)
                             .size(20.dp),
                     )
-
                     Text(
                         text = dog.favoriteCount.toString(),
                         style = MaterialTheme.typography.h2,
                         color = MaterialTheme.colors.onSurface.copy(0.5f),
                     )
                 }
-
-                Divider(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .width(1.dp)
-                        .height(48.dp)
-                )
+                VerticalDivider()
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
         }
     }
+}
+
+@Composable
+private fun VerticalDivider() {
+    Divider(
+        modifier = Modifier
+            .padding(8.dp)
+            .width(1.dp)
+            .height(52.dp)
+    )
 }

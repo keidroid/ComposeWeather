@@ -30,6 +30,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import red.torch.composesample.ui.common.DogAdaptionTopAppBar
@@ -39,7 +40,7 @@ import red.torch.composesample.viewmodel.DogListViewModel
 @Composable
 fun DogListScreen(
     navController: NavController,
-    viewModel: DogListViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: DogListViewModel = viewModel()
 ) {
     val dogListInfoState = viewModel.dogListInfo.observeAsState(null)
     viewModel.fetchDogList()
