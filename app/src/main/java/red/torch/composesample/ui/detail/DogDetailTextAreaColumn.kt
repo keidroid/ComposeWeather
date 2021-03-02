@@ -62,16 +62,16 @@ fun DogDetailTextAreaColumn(
     Spacer(Modifier.height(16.dp))
 }
 
+@Preview("Dark Theme")
 @Composable
-@Preview
 fun DogDetailTextAreaColumnDarkPreview() {
     MyTheme(darkTheme = true) {
         DogDetailTextAreaColumn("ラベル", "本文本文本文本文本文本文本文本文本文本文")
     }
 }
 
+@Preview("Light Theme")
 @Composable
-@Preview
 fun DogDetailTextAreaColumnLightPreview() {
     MyTheme(darkTheme = false) {
         DogDetailTextAreaColumn("ラベル", "本文本文本文本文本文本文本文本文本文本文")

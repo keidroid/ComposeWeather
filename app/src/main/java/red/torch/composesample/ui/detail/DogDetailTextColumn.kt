@@ -25,7 +25,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogDetailTextColumn(
@@ -57,4 +59,20 @@ fun DogDetailTextColumn(
             .fillMaxWidth()
             .height(1.dp)
     )
+}
+
+@Preview("Dark Theme")
+@Composable
+fun DogDetailTextColumnDarkPreview() {
+    MyTheme(darkTheme = true) {
+        DogDetailTextColumn("label", "text")
+    }
+}
+
+@Preview("Light Theme")
+@Composable
+fun DogDetailTextColumnLightPreview() {
+    MyTheme(darkTheme = false) {
+        DogDetailTextColumn("label", "text")
+    }
 }

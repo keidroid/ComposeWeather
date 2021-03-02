@@ -36,11 +36,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.chrisbanes.accompanist.glide.GlideImage
 import red.torch.composesample.R
 import red.torch.composesample.data.repository.ContributorInfo
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogDetailContributorColumn(
@@ -92,5 +94,31 @@ fun DogDetailContributorColumn(
                 style = typography.subtitle1,
             )
         }
+    }
+}
+
+@Preview("Dark Theme")
+@Composable
+fun DogDetailContributorColumnDarkPreview() {
+    val contributorInfo = ContributorInfo(
+        123,
+        "thumbnailUrl",
+        "name",
+    )
+    MyTheme(darkTheme = true) {
+        DogDetailContributorColumn(contributorInfo)
+    }
+}
+
+@Preview("Light Theme")
+@Composable
+fun DogDetailContributorColumnLightPreview() {
+    val contributorInfo = ContributorInfo(
+        123,
+        "thumbnailUrl",
+        "name",
+    )
+    MyTheme(darkTheme = false) {
+        DogDetailContributorColumn(contributorInfo)
     }
 }
