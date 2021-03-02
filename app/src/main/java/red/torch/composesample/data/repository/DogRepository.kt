@@ -26,7 +26,8 @@ interface DogRepository {
 }
 
 data class DogDetailInfo(
-    val id: Int = 0,
+    val id: Int,
+    val thumbnailUrl: String,
     val title: String,
     val createdAt: String,
     val location: String,
@@ -385,6 +386,7 @@ class DogRepositoryMock(
             RepoResult.Success(
                 DogDetailInfo(
                     id = target.id,
+                    thumbnailUrl = target.thumbnailUrl,
                     title = target.title,
                     createdAt = "2021年3月3日",
                     location = target.location,

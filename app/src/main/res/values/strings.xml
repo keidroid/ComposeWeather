@@ -11,6 +11,10 @@
       -->
     <string name="app_name">DOG ADAPTION</string>
 
+    <string name="common_back">戻る</string>
+    <string name="common_favorite">お気に入り</string>
+    <string name="common_share">共有</string>
+
     <string name="dog_list_search_result">%1sの検索結果: %2d件</string>
     <string name="dog_list_sort_separator">|</string>
     <string name="dog_list_sort_created_date">新着順</string>

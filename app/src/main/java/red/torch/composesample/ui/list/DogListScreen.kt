@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import red.torch.composesample.ui.common.DogAdaptionTopAppBar
+import red.torch.composesample.viewmodel.DogListViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -59,10 +60,10 @@ fun DogListScreen(
                 }
 
                 dogListInfo.groups.forEach { group ->
+                    // Experimental
                     stickyHeader {
                         DogListDateHeader(group.label)
                     }
-
                     group.dogSimpleInfos.forEach { dogSimpleInfo ->
                         item {
                             DogListContentsItem(dogSimpleInfo) { dogId ->
