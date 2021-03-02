@@ -35,18 +35,18 @@ val SecondaryLight = red200
 val Secondary = red500
 val SecondaryDark = red700
 
-val OnBackgroundDark = Color(0xFFFCF8F8)
+val BackgroundLight = Color(0xFFF8F6F4)
 val OnBackgroundLight = Color(0xFF3C3838)
 
-val SmokeDark = Color(0x08000000)
-val SmokeLight = Color(0x08FFFFFF)
+val BackgroundDark = Color(0xFF080604)
+val OnBackgroundDark = Color(0xFFFCF8F8)
 
 val DarkColors = darkColors(
     primary = Primary,
     primaryVariant = PrimaryDark,
     secondary = SecondaryDark,
     secondaryVariant = SecondaryDark,
-    background = SmokeLight,
+    background = BackgroundDark,
     onBackground = OnBackgroundDark,
 )
 
@@ -55,6 +55,6 @@ val LightColors = lightColors(
     primaryVariant = PrimaryLight,
     secondary = Secondary,
     secondaryVariant = SecondaryLight,
-    background = SmokeDark,
+    background = BackgroundLight,
     onBackground = OnBackgroundLight,
 )
