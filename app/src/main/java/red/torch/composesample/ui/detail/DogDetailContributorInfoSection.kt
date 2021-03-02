@@ -26,9 +26,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
+import red.torch.composesample.data.repository.ContributorInfo
 import red.torch.composesample.data.repository.DogDetailInfo
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogDetailContributorInfoSection(
@@ -70,5 +73,69 @@ fun DogDetailContributorInfoSection(
                 dog.recommend,
             )
         }
+    }
+}
+
+@Preview("Dark Theme")
+@Composable
+fun DogDetailContributorInfoSectionDarkPreview() {
+    val dog = DogDetailInfo(
+        id = 0,
+        thumbnailUrl = "",
+        title = "",
+        createdAt = "",
+        limitedAt = "",
+        pageView = 0,
+        favoriteCount = 0,
+        location = "",
+        type = "",
+        age = "",
+        gender = "",
+        size = "",
+        vaccine = "",
+        features = "",
+        contributor = ContributorInfo(
+            456,
+            "",
+            "contributorName"
+        ),
+        reason = "reason",
+        personality = "personality",
+        recommend = "recommend",
+    )
+    MyTheme(darkTheme = true) {
+        DogDetailContributorInfoSection(dog)
+    }
+}
+
+@Preview("Light Theme")
+@Composable
+fun DogDetailContributorInfoSectionLightPreview() {
+    val dog = DogDetailInfo(
+        id = 0,
+        thumbnailUrl = "",
+        title = "",
+        createdAt = "",
+        limitedAt = "",
+        pageView = 0,
+        favoriteCount = 0,
+        location = "",
+        type = "",
+        age = "",
+        gender = "",
+        size = "",
+        vaccine = "",
+        features = "",
+        contributor = ContributorInfo(
+            456,
+            "",
+            "contributorName"
+        ),
+        reason = "reason",
+        personality = "personality",
+        recommend = "recommend",
+    )
+    MyTheme(darkTheme = false) {
+        DogDetailContributorInfoSection(dog)
     }
 }

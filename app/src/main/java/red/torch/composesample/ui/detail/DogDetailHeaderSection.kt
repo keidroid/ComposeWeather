@@ -30,9 +30,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.chrisbanes.accompanist.glide.GlideImage
 import red.torch.composesample.R
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogDetailHeaderSection(
@@ -61,6 +63,24 @@ fun DogDetailHeaderSection(
                 contentDescription = stringResource(R.string.common_back),
                 modifier = Modifier.padding(8.dp)
             )
+        }
+    }
+}
+
+@Preview("Dark Theme")
+@Composable
+fun DogDetailHeaderSectionDarkPreview() {
+    MyTheme(darkTheme = true) {
+        DogDetailHeaderSection("") {
+        }
+    }
+}
+
+@Preview("Light Theme")
+@Composable
+fun DogDetailHeaderSectionLightPreview() {
+    MyTheme(darkTheme = false) {
+        DogDetailHeaderSection("") {
         }
     }
 }

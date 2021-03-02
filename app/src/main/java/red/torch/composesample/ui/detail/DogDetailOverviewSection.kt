@@ -44,9 +44,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
+import red.torch.composesample.data.repository.ContributorInfo
 import red.torch.composesample.data.repository.DogDetailInfo
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogDetailOverviewSection(
@@ -192,4 +195,70 @@ private fun VerticalDivider() {
             .width(1.dp)
             .height(52.dp)
     )
+}
+
+@Preview("Dark Theme", widthDp = 360, heightDp = 200)
+@Composable
+fun DogDetailOverviewSectionDarkPreview() {
+    val dog = DogDetailInfo(
+        id = 0,
+        thumbnailUrl = "",
+        title = "タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル",
+        createdAt = "",
+        limitedAt = "",
+        pageView = 0,
+        favoriteCount = 0,
+        location = "",
+        type = "",
+        age = "",
+        gender = "",
+        size = "",
+        vaccine = "",
+        features = "",
+        contributor = ContributorInfo(
+            0,
+            "",
+            ""
+        ),
+        reason = "",
+        personality = "",
+        recommend = "",
+    )
+    MyTheme(darkTheme = true) {
+        DogDetailOverviewSection(dog, true) {
+        }
+    }
+}
+
+@Preview("Light Theme", widthDp = 360, heightDp = 200)
+@Composable
+fun DogDetailOverviewSectionLightPreview() {
+    val dog = DogDetailInfo(
+        id = 0,
+        thumbnailUrl = "",
+        title = "タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル",
+        createdAt = "",
+        limitedAt = "2021年3月3日",
+        pageView = 12345,
+        favoriteCount = 678,
+        location = "",
+        type = "",
+        age = "",
+        gender = "",
+        size = "",
+        vaccine = "",
+        features = "",
+        contributor = ContributorInfo(
+            0,
+            "",
+            ""
+        ),
+        reason = "",
+        personality = "",
+        recommend = "",
+    )
+    MyTheme(darkTheme = false) {
+        DogDetailOverviewSection(dog, false) {
+        }
+    }
 }

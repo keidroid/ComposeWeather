@@ -26,9 +26,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composesample.R
+import red.torch.composesample.data.repository.ContributorInfo
 import red.torch.composesample.data.repository.DogDetailInfo
+import red.torch.composesample.ui.theme.MyTheme
 
 @Composable
 fun DogDetailBasicInfoSection(
@@ -78,5 +81,69 @@ fun DogDetailBasicInfoSection(
                 dog.vaccine,
             )
         }
+    }
+}
+
+@Preview("Dark Theme")
+@Composable
+fun DogDetailBasicInfoSectionDarkPreview() {
+    val dog = DogDetailInfo(
+        id = 0,
+        thumbnailUrl = "",
+        title = "",
+        createdAt = "",
+        limitedAt = "",
+        pageView = 0,
+        favoriteCount = 0,
+        location = "東京都",
+        type = "柴犬",
+        age = "1歳2ヶ月",
+        gender = "♂",
+        size = "大型犬",
+        vaccine = "接種済み",
+        features = "",
+        contributor = ContributorInfo(
+            0,
+            "",
+            ""
+        ),
+        reason = "",
+        personality = "",
+        recommend = "",
+    )
+    MyTheme(darkTheme = true) {
+        DogDetailBasicInfoSection(dog)
+    }
+}
+
+@Preview("Light Theme")
+@Composable
+fun DogDetailBasicInfoSectionLightPreview() {
+    val dog = DogDetailInfo(
+        id = 0,
+        thumbnailUrl = "",
+        title = "",
+        createdAt = "",
+        limitedAt = "",
+        pageView = 0,
+        favoriteCount = 0,
+        location = "東京都",
+        type = "柴犬",
+        age = "1歳2ヶ月",
+        gender = "♂",
+        size = "大型犬",
+        vaccine = "接種済み",
+        features = "",
+        contributor = ContributorInfo(
+            0,
+            "",
+            ""
+        ),
+        reason = "",
+        personality = "",
+        recommend = "",
+    )
+    MyTheme(darkTheme = false) {
+        DogDetailBasicInfoSection(dog)
     }
 }
