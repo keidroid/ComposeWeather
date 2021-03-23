@@ -32,7 +32,7 @@ import red.torch.composeweather.R
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun TemperatureText(celsius: Int) {
+fun TemperatureView(celsius: Int) {
     val description = stringResource(R.string.temperature_description, celsius)
     val label = stringResource(id = R.string.temperature_label, celsius)
     Row(
@@ -56,16 +56,16 @@ fun TemperatureText(celsius: Int) {
 
 @Preview
 @Composable
-fun TemperatureTextDarkPreview() {
+fun TemperatureViewDarkPreview() {
     MyTheme(darkTheme = true) {
-        TemperatureText(8)
+        TemperatureView(8)
     }
 }
 
 @Preview
 @Composable
-fun TemperatureTextLightPreview() {
+fun TemperatureViewLightPreview() {
     MyTheme(darkTheme = false) {
-        TemperatureText(12)
+        TemperatureView(12)
     }
 }

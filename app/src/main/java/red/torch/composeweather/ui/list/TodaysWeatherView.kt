@@ -43,7 +43,7 @@ import red.torch.composeweather.data.Weather
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun TodayWeatherInfo(dailyInfo: DailyInfo) {
+fun TodayWeatherView(dailyInfo: DailyInfo) {
     val todayDescription = stringResource(
         id = R.string.today_description,
         dailyInfo.dateDescription,
@@ -98,7 +98,7 @@ fun TodayWeatherInfo(dailyInfo: DailyInfo) {
 
 @Preview
 @Composable
-fun TodayWeatherInfoDarkPreview() {
+fun TodayWeatherViewDarkPreview() {
     MyTheme(darkTheme = true) {
         val dailyInfo = DailyInfo(
             dateLabel = "Wed, March 23",
@@ -106,13 +106,13 @@ fun TodayWeatherInfoDarkPreview() {
             celsius = 16,
             celsiusFeelLike = 20,
         )
-        TodayWeatherInfo(dailyInfo)
+        TodayWeatherView(dailyInfo)
     }
 }
 
 @Preview
 @Composable
-fun TodayWeatherInfoLightPreview() {
+fun TodayWeatherViewLightPreview() {
     MyTheme(darkTheme = false) {
         val dailyInfo = DailyInfo(
             dateLabel = "Wed, March 23",
@@ -120,6 +120,6 @@ fun TodayWeatherInfoLightPreview() {
             celsius = 16,
             celsiusFeelLike = 20,
         )
-        TodayWeatherInfo(dailyInfo)
+        TodayWeatherView(dailyInfo)
     }
 }

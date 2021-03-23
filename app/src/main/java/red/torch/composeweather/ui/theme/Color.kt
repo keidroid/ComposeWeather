@@ -46,7 +46,7 @@ val BackgroundLight = Color(0xFFE4F4FD)
 val OnBackgroundLight = Color(0xFF3C3838)
 
 val BackgroundDark1 = Color(0xFF080604)
-val BackgroundDark = Color(0xFF1C0C04)
+val BackgroundDark = Color(0x1A237E) // Indigo900
 val OnBackgroundDark = Color(0xFFFCF8F8)
 
 val DarkColors = darkColors(

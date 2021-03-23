@@ -15,11 +15,13 @@
  */
 package red.torch.composeweather.ui.list
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.lazy.LazyColumn
@@ -33,10 +35,12 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import red.torch.composeweather.R
+import red.torch.composeweather.data.WeatherListInfo
 import red.torch.composeweather.ui.theme.BackgroundDark
 import red.torch.composeweather.ui.theme.BackgroundDark1
 import red.torch.composeweather.ui.theme.BackgroundLight
@@ -59,33 +63,96 @@ fun WeatherListScreen(
 
     val verticalDarkGradientBrush = Brush.verticalGradient(
         colors = listOf(
-            BackgroundDark1,
-            BackgroundDark
+            BackgroundDark,
+            BackgroundDark1
         )
     )
 
-    Scaffold {
+    Scaffold(
+        modifier = Modifier.background(
+            brush = if (colors.isLight) {
+                verticalLightGradientBrush
+            } else {
+                verticalDarkGradientBrush
+            }
+        )
+    ) {
         weatherListInfo.value?.also { weatherListInfo ->
-            LazyColumn(
+            val configuration = LocalConfiguration.current
+            when (configuration.orientation) {
+                Configuration.ORIENTATION_LANDSCAPE -> {
+                    HorizontalWeatherListScreen(weatherListInfo)
+                }
+                else -> {
+                    VerticalWeatherListScreen(weatherListInfo)
+                }
+            }
+        } ?: run {
+            Box(modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center),
+                    color = colors.onBackground
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun VerticalWeatherListScreen(weatherListInfo: WeatherListInfo) {
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+
+    ) {
+        item {
+            Text(
+                stringResource(id = R.string.app_name),
+                style = typography.subtitle1,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        brush = if (colors.isLight) {
-                            verticalLightGradientBrush
-                        } else {
-                            verticalDarkGradientBrush
-                        }
-                    )
+                    .paddingFromBaseline(top = 80.dp)
+            )
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(40.dp))
+        }
+
+        item {
+            DailyInfoSection(weatherListInfo.dailyInfo)
+        }
+
+//                items(weatherListInfo.weeklyInfo) {
+//                    WeeklyInfoSection(dogSimpleInfo) {
+//                }
+    }
+}
+
+@Composable
+fun HorizontalWeatherListScreen(weatherListInfo: WeatherListInfo) {
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Row {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    stringResource(id = R.string.app_name),
+                    style = typography.subtitle1,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.paddingFromBaseline(top = 80.dp)
+                )
+                DailyInfoSection(weatherListInfo.dailyInfo)
+            }
+            LazyColumn(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.weight(1f)
             ) {
                 item {
-                    Text(
-                        stringResource(id = R.string.app_name),
-                        style = typography.subtitle1,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .paddingFromBaseline(top = 80.dp)
-                    )
                 }
 
                 item {
@@ -95,17 +162,6 @@ fun WeatherListScreen(
                 item {
                     DailyInfoSection(weatherListInfo.dailyInfo)
                 }
-
-//                items(weatherListInfo.weeklyInfo) {
-//                    WeeklyInfoSection(dogSimpleInfo) {
-//                }
-            }
-        } ?: run {
-            Box(modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center),
-                    color = colors.onBackground
-                )
             }
         }
     }

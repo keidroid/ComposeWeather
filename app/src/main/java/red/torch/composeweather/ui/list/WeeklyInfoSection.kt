@@ -26,7 +26,7 @@ import red.torch.composeweather.data.Weather
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun DailyInfoSection(dailyInfo: DailyInfo) {
+fun WeeklyInfoSection(dailyInfo: DailyInfo) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
@@ -38,7 +38,7 @@ fun DailyInfoSection(dailyInfo: DailyInfo) {
 
 @Preview
 @Composable
-fun DailyInfoSectionDarkPreview() {
+fun WeeklyInfoSectionDarkPreview() {
     MyTheme(darkTheme = true) {
         val dailyInfo = DailyInfo(
             dateLabel = "Tue, 23 March",
@@ -46,13 +46,13 @@ fun DailyInfoSectionDarkPreview() {
             celsius = 16,
             celsiusFeelLike = 20
         )
-        DailyInfoSection(dailyInfo)
+        WeeklyInfoSection(dailyInfo)
     }
 }
 
 @Preview
 @Composable
-fun DailyInfoSectionLightPreview() {
+fun WeeklyInfoSectionLightPreview() {
     MyTheme(darkTheme = false) {
         val dailyInfo = DailyInfo(
             dateLabel = "Tue, 23 March",
@@ -60,6 +60,6 @@ fun DailyInfoSectionLightPreview() {
             celsius = 16,
             celsiusFeelLike = 20
         )
-        DailyInfoSection(dailyInfo)
+        WeeklyInfoSection(dailyInfo)
     }
 }
