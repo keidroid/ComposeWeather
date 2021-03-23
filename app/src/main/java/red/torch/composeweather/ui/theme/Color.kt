@@ -19,35 +19,40 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color
 
-val teal200 = Color(0xFF03DAC5)
-val teal500 = Color(0xFF009688)
-val teal700 = Color(0xFF018786)
+val sun200 = Color(0xFFFFAA72)
+val sun300 = Color(0xFFF98C37)
+val sun400 = Color(0xFFF37600)
+val sun500 = Color(0xFFFF6300)
+val sun600 = Color(0xFFE35D00)
+val sun700 = Color(0xFFD65500)
 
-val red200 = Color(0xFFEF9A9A)
-val red500 = Color(0xFFF44336)
-val red700 = Color(0xFFD32F2F)
+val rain200 = Color(0xFF72C8FF)
+val rain300 = Color(0xFF16B1FD)
+val rain400 = Color(0xFF00A0FC)
+val rain500 = Color(0xFF0090F9)
+val rain600 = Color(0xFF0083EB)
+val rain700 = Color(0xFF0071D9)
 
-val PrimaryLight = teal200
-val Primary = teal500
-val PrimaryDark = teal700
+val PrimaryLight = sun200
+val Primary = sun500
+val PrimaryDark = sun700
 
-val SecondaryLight = red200
-val Secondary = red500
-val SecondaryDark = red700
+val SecondaryLight = rain200
+val Secondary = rain500
+val SecondaryDark = rain700
 
-// #
-
-// val BackgroundLight = Color(0xFFF8F6F4)
+val BackgroundLight1 = Color(0xFFF8F6F4)
 val BackgroundLight = Color(0xFFE4F4FD)
 val OnBackgroundLight = Color(0xFF3C3838)
 
-val BackgroundDark = Color(0xFF080604)
+val BackgroundDark1 = Color(0xFF080604)
+val BackgroundDark = Color(0xFF1C0C04)
 val OnBackgroundDark = Color(0xFFFCF8F8)
 
 val DarkColors = darkColors(
     primary = Primary,
     primaryVariant = PrimaryDark,
-    secondary = SecondaryDark,
+    secondary = rain200,
     secondaryVariant = SecondaryDark,
     background = BackgroundDark,
     onBackground = OnBackgroundDark,
@@ -56,8 +61,9 @@ val DarkColors = darkColors(
 val LightColors = lightColors(
     primary = Primary,
     primaryVariant = PrimaryLight,
-    secondary = Secondary,
+    secondary = rain400,
     secondaryVariant = SecondaryLight,
     background = BackgroundLight,
     onBackground = OnBackgroundLight,
+    surface = BackgroundLight1,
 )

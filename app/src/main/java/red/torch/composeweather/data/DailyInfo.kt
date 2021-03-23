@@ -18,6 +18,7 @@ package red.torch.composeweather.data
 data class DailyInfo(
     val id: Int,
     val date: String,
+    val dateDescription: String = "",
     val celsius: Int,
     val celsiusFeelLike: Int,
 )

@@ -18,12 +18,13 @@ package red.torch.composeweather.ui.list
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -33,17 +34,21 @@ fun TemperatureText(celsius: Int) {
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
-            celsius.toString(),
+            " $celsius°",
             style = MaterialTheme.typography.h1,
             modifier = Modifier
                 .paddingFromBaseline(top = 16.dp)
+                .semantics {
+                    contentDescription = "Today's temperature is $celsius degrees."
+                }
         )
 
-        Text(
-            "℃",
-            style = MaterialTheme.typography.h2,
-            modifier = Modifier
-                .padding(top = 16.dp)
-        )
+//        Text(
+//            "°",
+//            //"℃",
+//            style = MaterialTheme.typography.h2,
+//            modifier = Modifier
+//                .padding(top = 16.dp)
+//        )
     }
 }

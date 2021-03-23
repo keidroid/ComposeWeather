@@ -43,6 +43,7 @@ class FakeWeatherRepository(
                 dailyInfo = DailyInfo(
                     id = 1,
                     date = "Tue, 23 March",
+                    dateDescription = "Tuesday, 23, March",
                     celsius = 16,
                     celsiusFeelLike = 20,
                 ),

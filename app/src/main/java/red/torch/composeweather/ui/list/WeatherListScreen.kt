@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Scaffold
@@ -32,10 +31,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import red.torch.composeweather.R
+import red.torch.composeweather.ui.theme.BackgroundDark
+import red.torch.composeweather.ui.theme.BackgroundDark1
+import red.torch.composeweather.ui.theme.BackgroundLight
+import red.torch.composeweather.ui.theme.BackgroundLight1
 import red.torch.composeweather.viewmodel.WeatherListViewModel
 
 @Composable
@@ -45,12 +49,32 @@ fun WeatherListScreen(
     val weatherListInfo = viewModel.weatherListInfo.observeAsState(null)
     viewModel.fetchWeatherList()
 
+    val verticalLightGradientBrush = Brush.verticalGradient(
+        colors = listOf(
+            BackgroundLight,
+            BackgroundLight1
+        )
+    )
+
+    val verticalDarkGradientBrush = Brush.verticalGradient(
+        colors = listOf(
+            BackgroundDark1,
+            BackgroundDark
+        )
+    )
+
     Scaffold {
         weatherListInfo.value?.also { weatherListInfo ->
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colors.background)
+                    .background(
+                        brush = if (colors.isLight) {
+                            verticalLightGradientBrush
+                        } else {
+                            verticalDarkGradientBrush
+                        }
+                    )
             ) {
                 item {
                     Text(

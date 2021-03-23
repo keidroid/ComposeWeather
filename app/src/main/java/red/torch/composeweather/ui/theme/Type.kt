@@ -37,7 +37,7 @@ val defaultTypography = typographyFromDefaults(
         fontFamily = fonts,
         fontSize = 96.sp,
         fontWeight = FontWeight.Light,
-        letterSpacing = 0.sp,
+        letterSpacing = (-1.5).sp,
     ),
     h2 = TextStyle(
         fontFamily = fonts,
