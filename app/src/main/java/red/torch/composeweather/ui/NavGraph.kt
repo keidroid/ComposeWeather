@@ -25,9 +25,9 @@ import red.torch.composeweather.viewmodel.WeatherListViewModel
 
 @Composable
 fun NavGraph() {
-    NavHost(rememberNavController(), startDestination = "main") {
+    NavHost(rememberNavController(), startDestination = "list") {
         composable(
-            "main"
+            "list"
         ) {
             val viewModel = hiltNavGraphViewModel<WeatherListViewModel>()
             WeatherListScreen(viewModel)

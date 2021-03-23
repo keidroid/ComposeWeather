@@ -22,7 +22,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import red.torch.composeweather.data.RepoResult
-import red.torch.composeweather.data.repository.WeatherListInfo
+import red.torch.composeweather.data.WeatherListInfo
 import red.torch.composeweather.data.repository.WeatherRepository
 import javax.inject.Inject
 

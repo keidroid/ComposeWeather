@@ -17,11 +17,12 @@ package red.torch.composeweather.ui.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.MaterialTheme.typography
@@ -88,17 +89,16 @@ fun WeatherListScreen(
                 }
 
                 item {
+                    Spacer(modifier = Modifier.height(40.dp))
+                }
+
+                item {
                     DailyInfoSection(weatherListInfo.dailyInfo)
                 }
 
-                items(weatherListInfo.weeklyInfo) {
-//                    group.dogSimpleInfos.forEach { dogSimpleInfo ->
-//                        item {
-//                            DogListContentsItem(dogSimpleInfo) {
-//                            }
-//                        }
-//                    }
-                }
+//                items(weatherListInfo.weeklyInfo) {
+//                    WeeklyInfoSection(dogSimpleInfo) {
+//                }
             }
         } ?: run {
             Box(modifier = Modifier.fillMaxSize()) {

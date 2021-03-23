@@ -16,15 +16,13 @@
 package red.torch.composeweather.ui.list
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import red.torch.composeweather.data.DailyInfo
+import red.torch.composeweather.data.Weather
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
@@ -33,14 +31,6 @@ fun DailyInfoSection(dailyInfo: DailyInfo) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Spacer(modifier = Modifier.height(40.dp))
-
-//        Card(
-//            shape = RoundedCornerShape(50),
-//            elevation = 2.dp,
-//        ) {
-//        }
-
         TodayWeatherInfo(dailyInfo = dailyInfo)
         TemperatureText(celsius = dailyInfo.celsius)
     }
@@ -51,8 +41,8 @@ fun DailyInfoSection(dailyInfo: DailyInfo) {
 fun DailyInfoSectionDarkPreview() {
     MyTheme(darkTheme = true) {
         val dailyInfo = DailyInfo(
-            id = 1,
-            date = "Tue, 23 March",
+            dateLabel = "Tue, 23 March",
+            weather = Weather.RainyThenSunny,
             celsius = 16,
             celsiusFeelLike = 20
         )
@@ -65,13 +55,11 @@ fun DailyInfoSectionDarkPreview() {
 fun DailyInfoSectionLightPreview() {
     MyTheme(darkTheme = false) {
         val dailyInfo = DailyInfo(
-            id = 1,
-            date = "Tue, 23 March",
+            dateLabel = "Tue, 23 March",
+            weather = Weather.Sunny,
             celsius = 16,
             celsiusFeelLike = 20
         )
         DailyInfoSection(dailyInfo)
     }
 }
-
-

@@ -19,18 +19,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import red.torch.composeweather.data.DailyInfo
 import red.torch.composeweather.data.RepoResult
+import red.torch.composeweather.data.Weather
+import red.torch.composeweather.data.WeatherListInfo
 import kotlin.coroutines.CoroutineContext
 
 interface WeatherRepository {
     suspend fun getList(): RepoResult<WeatherListInfo>
 }
-
-data class WeatherListInfo(
-    val location: String,
-    val country: String,
-    val dailyInfo: DailyInfo,
-    val weeklyInfo: List<DailyInfo>
-)
 
 class FakeWeatherRepository(
     private val coroutineContext: CoroutineContext = Dispatchers.IO
@@ -41,11 +36,12 @@ class FakeWeatherRepository(
                 location = "Tokyo",
                 country = "Japan",
                 dailyInfo = DailyInfo(
-                    id = 1,
-                    date = "Tue, 23 March",
-                    dateDescription = "Tuesday, 23, March",
+                    dateLabel = "Tue, 23 March",
+                    dateDescription = "March 23",
+                    weather = Weather.find("rainy_then_sunny"),
                     celsius = 16,
                     celsiusFeelLike = 20,
+                    weatherDescription = "rainy"
                 ),
                 weeklyInfo = emptyList()
             )
