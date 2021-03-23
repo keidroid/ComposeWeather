@@ -15,13 +15,13 @@
 
     <string name="common_celsius">celsius</string>
 
-    <string name="common_sunny">sunny</string>
-    <string name="common_sunny_then_cloudy">sunny then cloudy</string>
-    <string name="common_sunny_then_rainy">sunny then rainy</string>
-    <string name="common_cloudy">cloudy</string>
-    <string name="common_cloudy_then_sunny">cloudy then sunny</string>
-    <string name="common_rainy">rainy</string>
-    <string name="common_rainy_then_sunny">rainy then sunny</string>
+    <string name="weather_sunny">sunny</string>
+    <string name="weather_sunny_then_cloudy">sunny then cloudy</string>
+    <string name="weather_sunny_then_rainy">sunny then rainy</string>
+    <string name="weather_cloudy">cloudy</string>
+    <string name="weather_cloudy_then_sunny">cloudy then sunny</string>
+    <string name="weather_rainy">rainy</string>
+    <string name="weather_rainy_then_sunny">rainy then sunny</string>
 
     <string name="today_description">"Today is %1s. Today's weather is %2s."</string>
 

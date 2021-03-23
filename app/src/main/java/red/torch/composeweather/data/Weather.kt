@@ -27,37 +27,37 @@ enum class Weather(
     Sunny(
         key = "sunny",
         icon = R.drawable.ic_wi_day_sunny,
-        description = R.string.common_sunny
+        description = R.string.weather_sunny
     ),
     SunnyThenCloudy(
         key = "sunny_then_cloudy",
         icon = R.drawable.ic_wi_day_cloudy,
-        description = R.string.common_sunny_then_cloudy
+        description = R.string.weather_sunny_then_cloudy
     ),
     SunnyThenRainy(
         key = "sunny_then_rainy",
         icon = R.drawable.ic_wi_day_rainy,
-        description = R.string.common_sunny_then_rainy
+        description = R.string.weather_sunny_then_rainy
     ),
     Cloudy(
         key = "cloudy",
         icon = R.drawable.ic_wi_cloudy,
-        description = R.string.common_cloudy
+        description = R.string.weather_cloudy
     ),
     CloudyThenSunny(
         key = "cloudy_then_sunny",
         icon = R.drawable.ic_wi_day_cloudy,
-        description = R.string.common_cloudy_then_sunny
+        description = R.string.weather_cloudy_then_sunny
     ),
     Rainy(
         key = "rainy",
         icon = R.drawable.ic_wi_rainy,
-        description = R.string.common_rainy
+        description = R.string.weather_rainy
     ),
     RainyThenSunny(
         key = "rainy_then_sunny",
         icon = R.drawable.ic_wi_day_rainy,
-        description = R.string.common_rainy_then_sunny
+        description = R.string.weather_rainy_then_sunny
     )
     ;
 

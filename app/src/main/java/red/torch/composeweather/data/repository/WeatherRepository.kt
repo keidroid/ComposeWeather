@@ -36,12 +36,11 @@ class FakeWeatherRepository(
                 location = "Tokyo",
                 country = "Japan",
                 dailyInfo = DailyInfo(
-                    dateLabel = "Tue, 23 March",
-                    dateDescription = "March 23",
+                    dateLabel = "Tue, March 23",
+                    dateDescription = "Tuesday, March 23",
                     weather = Weather.find("rainy_then_sunny"),
                     celsius = 16,
                     celsiusFeelLike = 20,
-                    weatherDescription = "rainy"
                 ),
                 weeklyInfo = emptyList()
             )

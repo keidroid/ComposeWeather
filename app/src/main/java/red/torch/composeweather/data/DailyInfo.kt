@@ -21,5 +21,4 @@ data class DailyInfo(
     val weather: Weather,
     val celsius: Int,
     val celsiusFeelLike: Int,
-    val weatherDescription: String = "",
 )

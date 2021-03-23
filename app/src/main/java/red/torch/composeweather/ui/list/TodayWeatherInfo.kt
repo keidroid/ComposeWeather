@@ -35,16 +35,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composeweather.R
 import red.torch.composeweather.data.DailyInfo
+import red.torch.composeweather.data.Weather
+import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
 fun TodayWeatherInfo(dailyInfo: DailyInfo) {
     val todayDescription = stringResource(
         id = R.string.today_description,
         dailyInfo.dateDescription,
-        dailyInfo.weatherDescription
+        stringResource(id = dailyInfo.weather.description)
     )
     Row(
         horizontalArrangement = Arrangement.Center,
@@ -90,5 +93,33 @@ fun TodayWeatherInfo(dailyInfo: DailyInfo) {
         }
 
         Spacer(modifier = Modifier.width(24.dp))
+    }
+}
+
+@Preview
+@Composable
+fun TodayWeatherInfoDarkPreview() {
+    MyTheme(darkTheme = true) {
+        val dailyInfo = DailyInfo(
+            dateLabel = "Wed, March 23",
+            weather = Weather.RainyThenSunny,
+            celsius = 16,
+            celsiusFeelLike = 20,
+        )
+        TodayWeatherInfo(dailyInfo)
+    }
+}
+
+@Preview
+@Composable
+fun TodayWeatherInfoLightPreview() {
+    MyTheme(darkTheme = false) {
+        val dailyInfo = DailyInfo(
+            dateLabel = "Wed, March 23",
+            weather = Weather.SunnyThenCloudy,
+            celsius = 16,
+            celsiusFeelLike = 20,
+        )
+        TodayWeatherInfo(dailyInfo)
     }
 }
