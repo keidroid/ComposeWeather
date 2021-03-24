@@ -7,23 +7,24 @@
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
 It is a weather forecast app. Added support for dark mode, landscape mode, and Talkback.
-天気予報アプリです。ダークモード、横画面、Talkbackに対応しました。
 
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
-:white_check_mark: Accessibility (Dark Mode, Landscape Mode, Talkback)
-:white_check_mark: Testable (Hilt)
+- :white_check_mark: Accessibility (Dark Mode, Landscape Mode, Talkback)
+- :white_check_mark: Testable (Hilt)
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
 
 - Portrait Mode
+
 <img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
 
 - Landscape Mode (Desktop Mode)
+
 <img src="/results/screenshot_3.png" height="260">
-<img src="/results/screenshot_4.png" width="260">
+<img src="/results/screenshot_4.png" height="260">
 
 ## License
 ```
