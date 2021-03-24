@@ -114,7 +114,7 @@ fun PortraitWeatherListScreen(weatherListInfo: WeatherListInfo) {
         }
 
         item {
-            HourlyInfoSection(weatherListInfo.weeklyInfo)
+            HourlyInfoSection(weatherListInfo.hourlyInfo)
         }
     }
 }
@@ -140,7 +140,7 @@ fun LandscapeWeatherListScreen(weatherListInfo: WeatherListInfo) {
                     .weight(1f)
                     .fillMaxHeight()
             ) {
-                HourlyInfoSection(weatherListInfo.weeklyInfo)
+                HourlyInfoSection(weatherListInfo.hourlyInfo)
             }
         }
     }

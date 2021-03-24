@@ -41,7 +41,7 @@ class FakeWeatherRepository(
                     weather = Weather.find("rainy_then_sunny"),
                     celsius = 16,
                 ),
-                weeklyInfo = listOf(
+                hourlyInfo = listOf(
                     WeatherInfo(
                         dateLabel = "12AM",
                         dateDescription = "12AM",

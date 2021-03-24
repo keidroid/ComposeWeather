@@ -19,5 +19,5 @@ data class WeatherListInfo(
     val location: String,
     val country: String,
     val weatherInfo: WeatherInfo,
-    val weeklyInfo: List<WeatherInfo>
+    val hourlyInfo: List<WeatherInfo>
 )
