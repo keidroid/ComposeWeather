@@ -22,57 +22,51 @@ import androidx.compose.ui.graphics.Color
 
 val Sun200 = Color(0xFFFFAA72)
 val Sun500 = Color(0xFFFF6300)
-val Sun700 = Color(0xFFD65500)
 
 val Cloud200 = Color(0xFFCFCFCF)
 val Cloud500 = Color(0xFF9E9E9E)
-val Cloud700 = Color(0xFF707070)
 
 val Rain200 = Color(0xFF72C8FF)
 val Rain500 = Color(0xFF0090F9)
-val Rain700 = Color(0xFF0071D9)
 
-val PrimaryLight = Sun200
-val Primary = Sun500
-val PrimaryDark = Sun700
-
-val SecondaryLight = Rain200
-val Secondary = Rain500
-val SecondaryDark = Rain700
-
-val BackgroundLight1 = Color(0xFFF8F6F4)
-val BackgroundLight2 = Color(0xFFF0F5FA)
-val BackgroundLight = Color(0xFFE4F4FD)
+val BackgroundLight100 = Color(0xFFF8F6F4)
+val BackgroundLight150 = Color(0xFFF0F5FA)
+val BackgroundLight200 = Color(0xFFE4F4FD)
 val OnBackgroundLight = Color(0xFF3C3838)
 
-val BackgroundDark1 = Color(0xFF080604)
-val BackgroundDark = Color(0x1A237E) // Indigo900
+val BackgroundDark800 = Color(0xFF03030E)
+val BackgroundDark850 = Color(0xFF05040B)
+val BackgroundDark900 = Color(0xFF080604)
 val OnBackgroundDark = Color(0xFFFCF8F8)
 
 val DarkColors = darkColors(
-    primary = Primary,
-    background = BackgroundDark,
+    primary = Sun500,
+    secondary = Rain500,
+    background = BackgroundDark850,
     onBackground = OnBackgroundDark,
-    surface = BackgroundDark1,
+    surface = BackgroundDark900,
+    onSurface = OnBackgroundDark
 )
 
 val LightColors = lightColors(
-    primary = Primary,
-    background = BackgroundLight2,
+    primary = Sun200,
+    secondary = Rain200,
+    background = BackgroundLight150,
     onBackground = OnBackgroundLight,
-    surface = BackgroundLight1,
+    surface = BackgroundLight100,
+    onSurface = OnBackgroundLight,
 )
 
 val VerticalLightGradientBrush = Brush.verticalGradient(
     colors = listOf(
-        BackgroundLight,
-        BackgroundLight1
+        BackgroundLight200,
+        BackgroundLight100
     )
 )
 
 val VerticalDarkGradientBrush = Brush.verticalGradient(
     colors = listOf(
-        BackgroundDark,
-        BackgroundDark1
+        BackgroundDark800,
+        BackgroundDark900
     )
 )

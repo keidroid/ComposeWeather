@@ -37,8 +37,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import red.torch.composeweather.data.WeatherListInfo
+import red.torch.composeweather.ui.list.daily.DailyInfoSection
+import red.torch.composeweather.ui.list.hourly.HourlyInfoSection
 import red.torch.composeweather.ui.theme.VerticalDarkGradientBrush
 import red.torch.composeweather.ui.theme.VerticalLightGradientBrush
+import red.torch.composeweather.viewmodel.ScreenAnimateState
 import red.torch.composeweather.viewmodel.WeatherListViewModel
 
 @Composable
@@ -46,6 +49,8 @@ fun WeatherListScreen(
     viewModel: WeatherListViewModel
 ) {
     val weatherListInfo = viewModel.weatherListInfo.observeAsState(null)
+    val animationState = viewModel.animation.observeAsState(ScreenAnimateState.Invisible)
+
     viewModel.fetchWeatherList()
 
     Scaffold {
@@ -62,10 +67,10 @@ fun WeatherListScreen(
                 val configuration = LocalConfiguration.current
                 when (configuration.orientation) {
                     Configuration.ORIENTATION_LANDSCAPE -> {
-                        LandscapeWeatherListScreen(weatherListInfo)
+                        LandscapeWeatherListScreen(weatherListInfo, animationState.value)
                     }
                     else -> {
-                        PortraitWeatherListScreen(weatherListInfo)
+                        PortraitWeatherListScreen(weatherListInfo, animationState.value)
                     }
                 }
             } ?: run {
@@ -81,7 +86,10 @@ fun WeatherListScreen(
 }
 
 @Composable
-fun PortraitWeatherListScreen(weatherListInfo: WeatherListInfo) {
+fun PortraitWeatherListScreen(
+    weatherListInfo: WeatherListInfo,
+    animateState: ScreenAnimateState
+) {
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -94,7 +102,7 @@ fun PortraitWeatherListScreen(weatherListInfo: WeatherListInfo) {
         }
 
         item {
-            DailyInfoSection(weatherListInfo.weatherInfo)
+            DailyInfoSection(weatherListInfo.weatherInfo, animateState.isVisibleDaily)
             Spacer(modifier = Modifier.height(24.dp))
         }
 
@@ -105,7 +113,10 @@ fun PortraitWeatherListScreen(weatherListInfo: WeatherListInfo) {
 }
 
 @Composable
-fun LandscapeWeatherListScreen(weatherListInfo: WeatherListInfo) {
+fun LandscapeWeatherListScreen(
+    weatherListInfo: WeatherListInfo,
+    animateState: ScreenAnimateState
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -116,7 +127,7 @@ fun LandscapeWeatherListScreen(weatherListInfo: WeatherListInfo) {
                 modifier = Modifier.width(280.dp)
             ) {
                 TitleTextView()
-                DailyInfoSection(weatherListInfo.weatherInfo)
+                DailyInfoSection(weatherListInfo.weatherInfo, animateState.isVisibleDaily)
             }
             Column(
                 verticalArrangement = Arrangement.Center,

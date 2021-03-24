@@ -29,5 +29,5 @@
     <string name="temperature_description">The current temperature is %d°C</string>
 
     <string name="hourly_description">The weather at %1s is %2s. The temperature is %3d°C</string>
-
+    <string name="hourly_temperature_chart_description">Hourly Temperature Chart</string>
 </resources>

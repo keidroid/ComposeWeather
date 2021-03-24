@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.ui.list
+package red.torch.composeweather.ui.list.daily
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -46,7 +46,7 @@ import red.torch.composeweather.data.color
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun TodayWeatherView(weatherInfo: WeatherInfo) {
+fun DailyWeatherView(weatherInfo: WeatherInfo) {
     val todayDescription = stringResource(
         id = R.string.today_description,
         weatherInfo.dateDescription,
@@ -108,8 +108,10 @@ fun TodayWeatherViewDarkPreview() {
             weather = Weather.RainyThenSunny,
             celsius = 16,
         )
-        Surface {
-            TodayWeatherView(dailyInfo)
+        Surface(
+            color = colors.background
+        ) {
+            DailyWeatherView(dailyInfo)
         }
     }
 }
@@ -123,8 +125,10 @@ fun TodayWeatherViewLightPreview() {
             weather = Weather.SunnyThenCloudy,
             celsius = 16,
         )
-        Surface {
-            TodayWeatherView(dailyInfo)
+        Surface(
+            color = colors.background
+        ) {
+            DailyWeatherView(dailyInfo)
         }
     }
 }

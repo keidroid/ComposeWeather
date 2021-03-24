@@ -13,26 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.ui.list
+package red.torch.composeweather.ui.list.daily
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composeweather.R
+import red.torch.composeweather.ui.common.Background
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun TemperatureView(celsius: Int) {
+fun TodayTemperatureView(
+    celsius: Int,
+    enabled: Boolean
+) {
     val description = stringResource(R.string.temperature_description, celsius)
     val label = stringResource(id = R.string.temperature_label, celsius)
     Row(
@@ -44,9 +53,18 @@ fun TemperatureView(celsius: Int) {
                 contentDescription = description
             }
     ) {
+        val textColors by animateColorAsState(
+            targetValue = if (enabled) {
+                colors.onBackground
+            } else {
+                Color.Transparent
+            },
+            animationSpec = tween(500)
+        )
         Text(
             label,
             style = MaterialTheme.typography.h1,
+            color = textColors,
             modifier = Modifier
                 .paddingFromBaseline(top = 8.dp, bottom = 8.dp)
                 .padding(start = 24.dp)
@@ -58,7 +76,9 @@ fun TemperatureView(celsius: Int) {
 @Composable
 fun TemperatureViewDarkPreview() {
     MyTheme(darkTheme = true) {
-        TemperatureView(8)
+        Background {
+            TodayTemperatureView(8, true)
+        }
     }
 }
 
@@ -66,6 +86,28 @@ fun TemperatureViewDarkPreview() {
 @Composable
 fun TemperatureViewLightPreview() {
     MyTheme(darkTheme = false) {
-        TemperatureView(12)
+        Background {
+            TodayTemperatureView(12, true)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun TemperatureViewDarkEnabledFalsePreview() {
+    MyTheme(darkTheme = true) {
+        Background {
+            TodayTemperatureView(8, false)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun TemperatureViewLightEnabledFalsePreview() {
+    MyTheme(darkTheme = false) {
+        Background {
+            TodayTemperatureView(12, false)
+        }
     }
 }

@@ -13,25 +13,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.ui.list
+package red.torch.composeweather.ui.list.hourly
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import red.torch.composeweather.data.Weather
 import red.torch.composeweather.data.WeatherInfo
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun HourlyInfoSection(weeklyInfo: List<WeatherInfo>) {
-    Column {
-        HourlyWeatherView(weeklyInfo)
+fun HourlyWeatherView(weeklyInfo: List<WeatherInfo>) {
+    LazyRow(
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(0.dp)
+    ) {
+        weeklyInfo.forEach {
+            item {
+                HourlyListItemView(it)
+                Spacer(modifier = Modifier.width(8.dp))
+            }
+        }
     }
 }
 
 @Preview
 @Composable
-fun HourlyInfoSectionDarkPreview() {
+fun HourlyWeatherViewDarkPreview() {
     MyTheme(darkTheme = true) {
         val dailyInfo = WeatherInfo(
             dateLabel = "4PM",
@@ -43,17 +61,17 @@ fun HourlyInfoSectionDarkPreview() {
                 add(dailyInfo)
             }
         }.toList()
-        HourlyInfoSection(weeklyInfo)
+        HourlyWeatherView(weeklyInfo)
     }
 }
 
 @Preview
 @Composable
-fun WeeklyInfoSectionLightPreview() {
+fun WeeklyWeatherViewLightPreview() {
     MyTheme(darkTheme = false) {
         val dailyInfo = WeatherInfo(
             dateLabel = "4PM",
-            weather = Weather.Sunny,
+            weather = Weather.SunnyThenCloudy,
             celsius = 16,
         )
         val weeklyInfo = mutableListOf<WeatherInfo>().apply {
@@ -61,6 +79,6 @@ fun WeeklyInfoSectionLightPreview() {
                 add(dailyInfo)
             }
         }.toList()
-        HourlyInfoSection(weeklyInfo)
+        HourlyWeatherView(weeklyInfo)
     }
 }

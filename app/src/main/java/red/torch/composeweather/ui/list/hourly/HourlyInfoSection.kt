@@ -13,51 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.ui.list
+package red.torch.composeweather.ui.list.hourly
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import red.torch.composeweather.data.Weather
 import red.torch.composeweather.data.WeatherInfo
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun DailyInfoSection(weatherInfo: WeatherInfo) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        TodayWeatherView(weatherInfo = weatherInfo)
-        TemperatureView(celsius = weatherInfo.celsius)
+fun HourlyInfoSection(weeklyInfo: List<WeatherInfo>) {
+    Column {
+        HourlyTemperatureChart(weeklyInfo)
+        Spacer(modifier = Modifier.height(16.dp))
+        HourlyWeatherView(weeklyInfo)
     }
 }
 
 @Preview
 @Composable
-fun DailyInfoSectionDarkPreview() {
+fun HourlyInfoSectionDarkPreview() {
     MyTheme(darkTheme = true) {
         val dailyInfo = WeatherInfo(
-            dateLabel = "Tue, 23 March",
+            dateLabel = "4PM",
             weather = Weather.RainyThenSunny,
             celsius = 16,
         )
-        DailyInfoSection(dailyInfo)
+        val weeklyInfo = mutableListOf<WeatherInfo>().apply {
+            repeat(7) {
+                add(dailyInfo)
+            }
+        }.toList()
+        HourlyInfoSection(weeklyInfo)
     }
 }
 
 @Preview
 @Composable
-fun DailyInfoSectionLightPreview() {
+fun WeeklyInfoSectionLightPreview() {
     MyTheme(darkTheme = false) {
         val dailyInfo = WeatherInfo(
-            dateLabel = "Tue, 23 March",
+            dateLabel = "4PM",
             weather = Weather.Sunny,
             celsius = 16,
         )
-        DailyInfoSection(dailyInfo)
+        val weeklyInfo = mutableListOf<WeatherInfo>().apply {
+            repeat(7) {
+                add(dailyInfo)
+            }
+        }.toList()
+        HourlyInfoSection(weeklyInfo)
     }
 }

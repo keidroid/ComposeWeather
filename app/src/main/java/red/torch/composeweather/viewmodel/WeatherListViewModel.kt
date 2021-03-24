@@ -20,6 +20,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import red.torch.composeweather.data.RepoResult
 import red.torch.composeweather.data.WeatherListInfo
@@ -30,10 +31,12 @@ import javax.inject.Inject
 class WeatherListViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository,
 ) : ViewModel() {
-
     private val _weatherListInfo: MutableLiveData<WeatherListInfo> = MutableLiveData()
     val weatherListInfo: LiveData<WeatherListInfo>
         get() = _weatherListInfo
+
+    val animation: MutableLiveData<ScreenAnimateState> =
+        MutableLiveData(ScreenAnimateState.Invisible)
 
     fun fetchWeatherList() {
         viewModelScope.launch {
@@ -42,6 +45,40 @@ class WeatherListViewModel @Inject constructor(
                     _weatherListInfo.value = result.data
                 }
             }
+            startTimer()
         }
     }
+
+    private fun startTimer() {
+        viewModelScope.launch {
+            repeat(ScreenAnimateState.values().size) {
+                delay(100)
+                animation.value = animation.value?.next()
+            }
+        }
+    }
+}
+
+enum class ScreenAnimateState {
+    Invisible,
+    VisibleDaily,
+    VisibleHourly1,
+    VisibleHourly2,
+    VisibleHourly3,
+    VisibleHourly4,
+    VisibleHourly5,
+    VisibleHourly6,
+    VisibleAll
+    ;
+
+    fun next(): ScreenAnimateState {
+        return if (this != VisibleAll) {
+            values()[this.ordinal + 1]
+        } else {
+            VisibleAll
+        }
+    }
+
+    val isVisibleDaily: Boolean
+        get() = this.ordinal >= VisibleDaily.ordinal
 }
