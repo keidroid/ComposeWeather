@@ -52,15 +52,16 @@ class WeatherListScreenTest {
         // Daily Info
         composeTestRule.onNodeWithText("Today, Tue, March 23").assertIsDisplayed()
         composeTestRule.onNodeWithText("16°").assertIsDisplayed()
-        composeTestRule.onNodeWithContentDescription("The current temperature is 16°C")
+        composeTestRule
+            .onNodeWithContentDescription("The current temperature is 16°C")
             .assertIsDisplayed()
 
         // Hourly Info
-        composeTestRule.onNodeWithContentDescription("Hourly Temperature Chart").assertIsDisplayed()
-
-        // ? needs two space
         composeTestRule
-            .onNodeWithContentDescription("The weather at 12AM is sunny. The temperature is  18°C")
+            .onNodeWithContentDescription("Hourly Temperature Chart")
+            .assertIsDisplayed()
+        composeTestRule
+            .onNodeWithContentDescription("The weather at 12AM is sunny. The temperature is  18°C") // ? needs two space
             .assertIsDisplayed()
     }
 }
