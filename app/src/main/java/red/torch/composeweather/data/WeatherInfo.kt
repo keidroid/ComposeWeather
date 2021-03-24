@@ -20,4 +20,5 @@ data class WeatherInfo(
     val dateDescription: String = "",
     val weather: Weather,
     val celsius: Int,
+    val focus: Boolean = false
 )

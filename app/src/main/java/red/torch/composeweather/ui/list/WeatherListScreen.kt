@@ -34,14 +34,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import red.torch.composeweather.data.WeatherListInfo
-import red.torch.composeweather.ui.theme.BackgroundDark
-import red.torch.composeweather.ui.theme.BackgroundDark1
-import red.torch.composeweather.ui.theme.BackgroundLight
-import red.torch.composeweather.ui.theme.BackgroundLight1
+import red.torch.composeweather.ui.theme.VerticalDarkGradientBrush
+import red.torch.composeweather.ui.theme.VerticalLightGradientBrush
 import red.torch.composeweather.viewmodel.WeatherListViewModel
 
 @Composable
@@ -51,45 +48,33 @@ fun WeatherListScreen(
     val weatherListInfo = viewModel.weatherListInfo.observeAsState(null)
     viewModel.fetchWeatherList()
 
-    val verticalLightGradientBrush = Brush.verticalGradient(
-        colors = listOf(
-            BackgroundLight,
-            BackgroundLight1
-        )
-    )
-
-    val verticalDarkGradientBrush = Brush.verticalGradient(
-        colors = listOf(
-            BackgroundDark,
-            BackgroundDark1
-        )
-    )
-
-    Scaffold(
-        modifier = Modifier.background(
-            brush = if (colors.isLight) {
-                verticalLightGradientBrush
-            } else {
-                verticalDarkGradientBrush
-            }
-        )
-    ) {
-        weatherListInfo.value?.also { weatherListInfo ->
-            val configuration = LocalConfiguration.current
-            when (configuration.orientation) {
-                Configuration.ORIENTATION_LANDSCAPE -> {
-                    LandscapeWeatherListScreen(weatherListInfo)
+    Scaffold {
+        Box(
+            modifier = Modifier.background(
+                brush = if (colors.isLight) {
+                    VerticalLightGradientBrush
+                } else {
+                    VerticalDarkGradientBrush
                 }
-                else -> {
-                    PortraitWeatherListScreen(weatherListInfo)
+            )
+        ) {
+            weatherListInfo.value?.also { weatherListInfo ->
+                val configuration = LocalConfiguration.current
+                when (configuration.orientation) {
+                    Configuration.ORIENTATION_LANDSCAPE -> {
+                        LandscapeWeatherListScreen(weatherListInfo)
+                    }
+                    else -> {
+                        PortraitWeatherListScreen(weatherListInfo)
+                    }
                 }
-            }
-        } ?: run {
-            Box(modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center),
-                    color = colors.onBackground
-                )
+            } ?: run {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.Center),
+                        color = colors.onBackground
+                    )
+                }
             }
         }
     }

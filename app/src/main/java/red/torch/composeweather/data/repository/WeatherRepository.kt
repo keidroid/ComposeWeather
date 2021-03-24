@@ -59,6 +59,7 @@ class FakeWeatherRepository(
                         dateDescription = "4PM",
                         weather = Weather.SunnyThenRainy,
                         celsius = 16,
+                        focus = true,
                     ),
                     WeatherInfo(
                         dateLabel = "6PM",

@@ -17,6 +17,7 @@ package red.torch.composeweather.ui.theme
 
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 val Sun200 = Color(0xFFFFAA72)
@@ -40,6 +41,7 @@ val Secondary = Rain500
 val SecondaryDark = Rain700
 
 val BackgroundLight1 = Color(0xFFF8F6F4)
+val BackgroundLight2 = Color(0xFFF0F5FA)
 val BackgroundLight = Color(0xFFE4F4FD)
 val OnBackgroundLight = Color(0xFF3C3838)
 
@@ -56,7 +58,21 @@ val DarkColors = darkColors(
 
 val LightColors = lightColors(
     primary = Primary,
-    background = BackgroundLight,
+    background = BackgroundLight2,
     onBackground = OnBackgroundLight,
     surface = BackgroundLight1,
+)
+
+val VerticalLightGradientBrush = Brush.verticalGradient(
+    colors = listOf(
+        BackgroundLight,
+        BackgroundLight1
+    )
+)
+
+val VerticalDarkGradientBrush = Brush.verticalGradient(
+    colors = listOf(
+        BackgroundDark,
+        BackgroundDark1
+    )
 )

@@ -17,4 +17,5 @@ package red.torch.composeweather.ui.theme
 
 import androidx.compose.ui.unit.dp
 
-val ElevationCard = 0.dp
+val ElevationFocusOnCard = 4.dp
+val ElevationFocusOffCard = 0.dp

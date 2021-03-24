@@ -40,7 +40,8 @@ import red.torch.composeweather.R
 import red.torch.composeweather.data.Weather
 import red.torch.composeweather.data.WeatherInfo
 import red.torch.composeweather.data.color
-import red.torch.composeweather.ui.theme.ElevationCard
+import red.torch.composeweather.ui.theme.ElevationFocusOffCard
+import red.torch.composeweather.ui.theme.ElevationFocusOnCard
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
@@ -53,7 +54,16 @@ fun HourlyListItemView(weatherInfo: WeatherInfo) {
     )
     Card(
         shape = shapes.small,
-        elevation = ElevationCard,
+        backgroundColor = if (weatherInfo.focus) {
+            colors.surface
+        } else {
+            colors.background
+        },
+        elevation = if (weatherInfo.focus) {
+            ElevationFocusOnCard
+        } else {
+            ElevationFocusOffCard
+        },
         modifier = Modifier.semantics(
             mergeDescendants = true
         ) {
