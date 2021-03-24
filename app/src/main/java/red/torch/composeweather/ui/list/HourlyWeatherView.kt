@@ -16,57 +16,52 @@
 package red.torch.composeweather.ui.list
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import red.torch.composeweather.R
-import red.torch.composeweather.data.DailyInfo
 import red.torch.composeweather.data.Weather
+import red.torch.composeweather.data.WeatherInfo
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun WeeklyWeatherView(weeklyInfo: List<DailyInfo>) {
+fun HourlyWeatherView(weeklyInfo: List<WeatherInfo>) {
     LazyRow(
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 16.dp)
+        modifier = Modifier.padding(0.dp)
     ) {
-        items(7) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_wi_day_rainy),
-                contentDescription = null,
-                tint = MaterialTheme.colors.secondary,
-                modifier = Modifier.size(48.dp)
-            )
+        weeklyInfo.forEach {
+            item {
+                HourlyListItemView(it)
+                Spacer(modifier = Modifier.width(8.dp))
+            }
         }
     }
 }
 
 @Preview
 @Composable
-fun WeeklyWeatherViewDarkPreview() {
+fun HourlyWeatherViewDarkPreview() {
     MyTheme(darkTheme = true) {
-        val dailyInfo = DailyInfo(
-            dateLabel = "Wed, March 23",
+        val dailyInfo = WeatherInfo(
+            dateLabel = "4PM",
             weather = Weather.RainyThenSunny,
             celsius = 16,
-            celsiusFeelLike = 20,
         )
-        val weeklyInfo = mutableListOf<DailyInfo>().apply {
+        val weeklyInfo = mutableListOf<WeatherInfo>().apply {
             repeat(7) {
                 add(dailyInfo)
             }
         }.toList()
-        WeeklyWeatherView(weeklyInfo)
+        HourlyWeatherView(weeklyInfo)
     }
 }
 
@@ -74,17 +69,16 @@ fun WeeklyWeatherViewDarkPreview() {
 @Composable
 fun WeeklyWeatherViewLightPreview() {
     MyTheme(darkTheme = false) {
-        val dailyInfo = DailyInfo(
-            dateLabel = "Wed, March 23",
+        val dailyInfo = WeatherInfo(
+            dateLabel = "4PM",
             weather = Weather.SunnyThenCloudy,
             celsius = 16,
-            celsiusFeelLike = 20,
         )
-        val weeklyInfo = mutableListOf<DailyInfo>().apply {
+        val weeklyInfo = mutableListOf<WeatherInfo>().apply {
             repeat(7) {
                 add(dailyInfo)
             }
         }.toList()
-        WeeklyWeatherView(weeklyInfo)
+        HourlyWeatherView(weeklyInfo)
     }
 }

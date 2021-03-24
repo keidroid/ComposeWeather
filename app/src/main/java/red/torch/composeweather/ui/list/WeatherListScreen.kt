@@ -17,29 +17,26 @@ package red.torch.composeweather.ui.list
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme.colors
-import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import red.torch.composeweather.R
 import red.torch.composeweather.data.WeatherListInfo
 import red.torch.composeweather.ui.theme.BackgroundDark
 import red.torch.composeweather.ui.theme.BackgroundDark1
@@ -81,10 +78,10 @@ fun WeatherListScreen(
             val configuration = LocalConfiguration.current
             when (configuration.orientation) {
                 Configuration.ORIENTATION_LANDSCAPE -> {
-                    HorizontalWeatherListScreen(weatherListInfo)
+                    LandscapeWeatherListScreen(weatherListInfo)
                 }
                 else -> {
-                    VerticalWeatherListScreen(weatherListInfo)
+                    PortraitWeatherListScreen(weatherListInfo)
                 }
             }
         } ?: run {
@@ -99,7 +96,7 @@ fun WeatherListScreen(
 }
 
 @Composable
-fun VerticalWeatherListScreen(weatherListInfo: WeatherListInfo) {
+fun PortraitWeatherListScreen(weatherListInfo: WeatherListInfo) {
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -107,61 +104,43 @@ fun VerticalWeatherListScreen(weatherListInfo: WeatherListInfo) {
 
     ) {
         item {
-            Text(
-                stringResource(id = R.string.app_name),
-                style = typography.subtitle1,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .paddingFromBaseline(top = 80.dp)
-            )
-        }
-
-        item {
+            TitleTextView()
             Spacer(modifier = Modifier.height(40.dp))
         }
 
         item {
-            DailyInfoSection(weatherListInfo.dailyInfo)
+            DailyInfoSection(weatherListInfo.weatherInfo)
+            Spacer(modifier = Modifier.height(24.dp))
         }
 
-//                items(weatherListInfo.weeklyInfo) {
-//                    WeeklyInfoSection(dogSimpleInfo) {
-//                }
+        item {
+            HourlyInfoSection(weatherListInfo.weeklyInfo)
+        }
     }
 }
 
 @Composable
-fun HorizontalWeatherListScreen(weatherListInfo: WeatherListInfo) {
+fun LandscapeWeatherListScreen(weatherListInfo: WeatherListInfo) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
         Row {
             Column(
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.width(280.dp)
             ) {
-                Text(
-                    stringResource(id = R.string.app_name),
-                    style = typography.subtitle1,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.paddingFromBaseline(top = 80.dp)
-                )
-                DailyInfoSection(weatherListInfo.dailyInfo)
+                TitleTextView()
+                DailyInfoSection(weatherListInfo.weatherInfo)
             }
-            LazyColumn(
+            Column(
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
             ) {
-                item {
-                }
-
-                item {
-                    Spacer(modifier = Modifier.height(40.dp))
-                }
-
-                item {
-                    DailyInfoSection(weatherListInfo.dailyInfo)
-                }
+                HourlyInfoSection(weatherListInfo.weeklyInfo)
             }
         }
     }

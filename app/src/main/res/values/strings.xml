@@ -26,6 +26,8 @@
     <string name="today_description">"Today is %1s. Today's weather is %2s."</string>
 
     <string name="temperature_label">%d°</string>
-    <string name="temperature_description">The current temperature is %d°</string>
+    <string name="temperature_description">The current temperature is %d°C</string>
+
+    <string name="hourly_description">The weather at %1s is %2s. The temperature is %3d°C</string>
 
 </resources>

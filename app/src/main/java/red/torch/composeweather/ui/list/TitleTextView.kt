@@ -13,27 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.ui.theme
+package red.torch.composeweather.ui.list
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import red.torch.composeweather.R
 
 @Composable
-fun MyTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit,
-) {
-    val colors = if (darkTheme) {
-        DarkColors
-    } else {
-        LightColors
-    }
-    MaterialTheme(
-        colors = colors,
-        typography = defaultTypography,
-        shapes = defaultShapes,
-    ) {
-        content()
-    }
+fun TitleTextView() {
+    Text(
+        stringResource(id = R.string.app_name),
+        style = MaterialTheme.typography.subtitle1,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.paddingFromBaseline(top = 80.dp)
+    )
 }

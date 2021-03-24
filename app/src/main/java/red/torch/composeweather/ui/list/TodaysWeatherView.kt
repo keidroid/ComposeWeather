@@ -27,6 +27,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,16 +40,17 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import red.torch.composeweather.R
-import red.torch.composeweather.data.DailyInfo
 import red.torch.composeweather.data.Weather
+import red.torch.composeweather.data.WeatherInfo
+import red.torch.composeweather.data.color
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun TodayWeatherView(dailyInfo: DailyInfo) {
+fun TodayWeatherView(weatherInfo: WeatherInfo) {
     val todayDescription = stringResource(
         id = R.string.today_description,
-        dailyInfo.dateDescription,
-        stringResource(id = dailyInfo.weather.description)
+        weatherInfo.dateDescription,
+        stringResource(id = weatherInfo.weather.description)
     )
     Row(
         horizontalArrangement = Arrangement.Center,
@@ -61,9 +64,9 @@ fun TodayWeatherView(dailyInfo: DailyInfo) {
             }
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_wi_day_rainy),
+            painter = painterResource(id = weatherInfo.weather.icon),
             contentDescription = null,
-            tint = MaterialTheme.colors.secondary,
+            tint = weatherInfo.weather.color(isLight = colors.isLight),
             modifier = Modifier.size(48.dp)
         )
 
@@ -85,7 +88,7 @@ fun TodayWeatherView(dailyInfo: DailyInfo) {
                     .paddingFromBaseline(top = 8.dp, bottom = 8.dp)
             )
             Text(
-                dailyInfo.dateLabel,
+                weatherInfo.dateLabel,
                 style = MaterialTheme.typography.body1,
                 modifier = Modifier
                     .paddingFromBaseline(top = 8.dp, bottom = 8.dp)
@@ -100,13 +103,14 @@ fun TodayWeatherView(dailyInfo: DailyInfo) {
 @Composable
 fun TodayWeatherViewDarkPreview() {
     MyTheme(darkTheme = true) {
-        val dailyInfo = DailyInfo(
+        val dailyInfo = WeatherInfo(
             dateLabel = "Wed, March 23",
             weather = Weather.RainyThenSunny,
             celsius = 16,
-            celsiusFeelLike = 20,
         )
-        TodayWeatherView(dailyInfo)
+        Surface {
+            TodayWeatherView(dailyInfo)
+        }
     }
 }
 
@@ -114,12 +118,13 @@ fun TodayWeatherViewDarkPreview() {
 @Composable
 fun TodayWeatherViewLightPreview() {
     MyTheme(darkTheme = false) {
-        val dailyInfo = DailyInfo(
+        val dailyInfo = WeatherInfo(
             dateLabel = "Wed, March 23",
             weather = Weather.SunnyThenCloudy,
             celsius = 16,
-            celsiusFeelLike = 20,
         )
-        TodayWeatherView(dailyInfo)
+        Surface {
+            TodayWeatherView(dailyInfo)
+        }
     }
 }

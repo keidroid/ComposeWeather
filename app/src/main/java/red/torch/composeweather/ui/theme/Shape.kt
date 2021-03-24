@@ -13,11 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.data
+package red.torch.composeweather.ui.theme
 
-data class WeatherListInfo(
-    val location: String,
-    val country: String,
-    val weatherInfo: WeatherInfo,
-    val weeklyInfo: List<WeatherInfo>
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Shapes
+import androidx.compose.ui.unit.dp
+
+val defaultShapes = Shapes(
+    small = CircleShape,
+    medium = RoundedCornerShape(8.dp),
 )

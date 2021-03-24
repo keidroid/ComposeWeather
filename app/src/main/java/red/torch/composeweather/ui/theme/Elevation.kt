@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.data
+package red.torch.composeweather.ui.theme
 
-data class DailyInfo(
-    val dateLabel: String,
-    val dateDescription: String = "",
-    val weather: Weather,
-    val celsius: Int,
-    val celsiusFeelLike: Int,
-)
+import androidx.compose.ui.unit.dp
+
+val ElevationCard = 0.dp

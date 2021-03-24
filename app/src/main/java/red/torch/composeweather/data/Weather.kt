@@ -17,7 +17,14 @@ package red.torch.composeweather.data
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.ui.graphics.Color
 import red.torch.composeweather.R
+import red.torch.composeweather.ui.theme.Cloud200
+import red.torch.composeweather.ui.theme.Cloud500
+import red.torch.composeweather.ui.theme.Rain200
+import red.torch.composeweather.ui.theme.Rain500
+import red.torch.composeweather.ui.theme.Sun200
+import red.torch.composeweather.ui.theme.Sun500
 
 enum class Weather(
     val key: String,
@@ -64,6 +71,36 @@ enum class Weather(
     companion object {
         fun find(key: String): Weather {
             return values().find { it.key == key } ?: error("Not Found Weather")
+        }
+    }
+}
+
+fun Weather.color(isLight: Boolean): Color {
+    return when (this) {
+        Weather.Sunny -> {
+            if (isLight) {
+                Sun500
+            } else {
+                Sun200
+            }
+        }
+        Weather.SunnyThenCloudy,
+        Weather.Cloudy,
+        Weather.CloudyThenSunny -> {
+            if (isLight) {
+                Cloud500
+            } else {
+                Cloud200
+            }
+        }
+        Weather.Rainy,
+        Weather.SunnyThenRainy,
+        Weather.RainyThenSunny -> {
+            if (isLight) {
+                Rain500
+            } else {
+                Rain200
+            }
         }
     }
 }

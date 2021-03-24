@@ -21,18 +21,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import red.torch.composeweather.data.DailyInfo
 import red.torch.composeweather.data.Weather
+import red.torch.composeweather.data.WeatherInfo
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun DailyInfoSection(dailyInfo: DailyInfo) {
+fun DailyInfoSection(weatherInfo: WeatherInfo) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
     ) {
-        TodayWeatherView(dailyInfo = dailyInfo)
-        TemperatureView(celsius = dailyInfo.celsius)
+        TodayWeatherView(weatherInfo = weatherInfo)
+        TemperatureView(celsius = weatherInfo.celsius)
     }
 }
 
@@ -40,11 +40,10 @@ fun DailyInfoSection(dailyInfo: DailyInfo) {
 @Composable
 fun DailyInfoSectionDarkPreview() {
     MyTheme(darkTheme = true) {
-        val dailyInfo = DailyInfo(
+        val dailyInfo = WeatherInfo(
             dateLabel = "Tue, 23 March",
             weather = Weather.RainyThenSunny,
             celsius = 16,
-            celsiusFeelLike = 20
         )
         DailyInfoSection(dailyInfo)
     }
@@ -54,11 +53,10 @@ fun DailyInfoSectionDarkPreview() {
 @Composable
 fun DailyInfoSectionLightPreview() {
     MyTheme(darkTheme = false) {
-        val dailyInfo = DailyInfo(
+        val dailyInfo = WeatherInfo(
             dateLabel = "Tue, 23 March",
             weather = Weather.Sunny,
             celsius = 16,
-            celsiusFeelLike = 20
         )
         DailyInfoSection(dailyInfo)
     }

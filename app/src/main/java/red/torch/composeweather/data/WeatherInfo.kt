@@ -15,9 +15,9 @@
  */
 package red.torch.composeweather.data
 
-data class WeatherListInfo(
-    val location: String,
-    val country: String,
-    val weatherInfo: WeatherInfo,
-    val weeklyInfo: List<WeatherInfo>
+data class WeatherInfo(
+    val dateLabel: String,
+    val dateDescription: String = "",
+    val weather: Weather,
+    val celsius: Int,
 )

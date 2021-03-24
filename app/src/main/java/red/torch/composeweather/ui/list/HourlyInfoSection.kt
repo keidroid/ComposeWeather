@@ -16,50 +16,51 @@
 package red.torch.composeweather.ui.list
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import red.torch.composeweather.data.DailyInfo
 import red.torch.composeweather.data.Weather
+import red.torch.composeweather.data.WeatherInfo
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
-fun WeeklyListItemView(dailyInfo: DailyInfo) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        TodayWeatherView(dailyInfo = dailyInfo)
-        TemperatureView(celsius = dailyInfo.celsius)
+fun HourlyInfoSection(weeklyInfo: List<WeatherInfo>) {
+    Column {
+        HourlyWeatherView(weeklyInfo)
     }
 }
 
 @Preview
 @Composable
-fun WeeklyListItemViewDarkPreview() {
+fun HourlyInfoSectionDarkPreview() {
     MyTheme(darkTheme = true) {
-        val dailyInfo = DailyInfo(
-            dateLabel = "Tue, 23 March",
+        val dailyInfo = WeatherInfo(
+            dateLabel = "4PM",
             weather = Weather.RainyThenSunny,
             celsius = 16,
-            celsiusFeelLike = 20
         )
-        WeeklyListItemView(dailyInfo)
+        val weeklyInfo = mutableListOf<WeatherInfo>().apply {
+            repeat(7) {
+                add(dailyInfo)
+            }
+        }.toList()
+        HourlyInfoSection(weeklyInfo)
     }
 }
 
 @Preview
 @Composable
-fun WeeklyListItemViewLightPreview() {
+fun WeeklyInfoSectionLightPreview() {
     MyTheme(darkTheme = false) {
-        val dailyInfo = DailyInfo(
-            dateLabel = "Tue, 23 March",
+        val dailyInfo = WeatherInfo(
+            dateLabel = "4PM",
             weather = Weather.Sunny,
             celsius = 16,
-            celsiusFeelLike = 20
         )
-        WeeklyListItemView(dailyInfo)
+        val weeklyInfo = mutableListOf<WeatherInfo>().apply {
+            repeat(7) {
+                add(dailyInfo)
+            }
+        }.toList()
+        HourlyInfoSection(weeklyInfo)
     }
 }
