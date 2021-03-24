@@ -13,11 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package red.torch.composeweather.data
+package red.torch.composeweather
 
-data class WeatherListInfo(
-    val location: String,
-    val country: String,
-    val dailyInfo: WeatherInfo,
-    val hourlyInfo: List<WeatherInfo>
-)
+import com.google.common.truth.Truth.assertThat
+import junit.framework.Assert.fail
+import org.junit.Test
+import red.torch.composeweather.data.Weather
+
+class WeatherTest {
+
+    @Test
+    fun findTest() {
+        val result = Weather.find("sunny")
+
+        assertThat(result.key).isEqualTo("sunny")
+        assertThat(result.icon).isEqualTo(R.drawable.ic_wi_day_sunny)
+    }
+
+    @Test
+    fun notFoundIsException() {
+        try {
+            Weather.find("hogehoge")
+        } catch (e: Exception) {
+            return
+        }
+        fail()
+    }
+}

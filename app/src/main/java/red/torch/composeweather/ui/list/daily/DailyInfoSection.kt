@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import red.torch.composeweather.data.Weather
 import red.torch.composeweather.data.WeatherInfo
+import red.torch.composeweather.ui.common.Background
 import red.torch.composeweather.ui.theme.MyTheme
 
 @Composable
@@ -39,25 +40,29 @@ fun DailyInfoSection(weatherInfo: WeatherInfo, enabled: Boolean = true) {
 @Preview
 @Composable
 fun DailyInfoSectionDarkPreview() {
+    val dailyInfo = WeatherInfo(
+        dateLabel = "Tue, March 23",
+        weather = Weather.RainyThenSunny,
+        celsius = 16,
+    )
     MyTheme(darkTheme = true) {
-        val dailyInfo = WeatherInfo(
-            dateLabel = "Tue, 23 March",
-            weather = Weather.RainyThenSunny,
-            celsius = 16,
-        )
-        DailyInfoSection(dailyInfo)
+        Background {
+            DailyInfoSection(dailyInfo)
+        }
     }
 }
 
 @Preview
 @Composable
 fun DailyInfoSectionLightPreview() {
+    val dailyInfo = WeatherInfo(
+        dateLabel = "Tue, March 23",
+        weather = Weather.Sunny,
+        celsius = 16,
+    )
     MyTheme(darkTheme = false) {
-        val dailyInfo = WeatherInfo(
-            dateLabel = "Tue, 23 March",
-            weather = Weather.Sunny,
-            celsius = 16,
-        )
-        DailyInfoSection(dailyInfo)
+        Background {
+            DailyInfoSection(dailyInfo)
+        }
     }
 }

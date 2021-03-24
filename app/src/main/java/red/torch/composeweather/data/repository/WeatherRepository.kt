@@ -35,7 +35,7 @@ class FakeWeatherRepository(
             val info = WeatherListInfo(
                 location = "Tokyo",
                 country = "Japan",
-                weatherInfo = WeatherInfo(
+                dailyInfo = WeatherInfo(
                     dateLabel = "Tue, March 23",
                     dateDescription = "Tuesday, March 23",
                     weather = Weather.find("rainy_then_sunny"),

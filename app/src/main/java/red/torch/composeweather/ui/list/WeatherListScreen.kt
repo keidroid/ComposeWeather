@@ -102,7 +102,7 @@ fun PortraitWeatherListScreen(
         }
 
         item {
-            DailyInfoSection(weatherListInfo.weatherInfo, animateState.isVisibleDaily)
+            DailyInfoSection(weatherListInfo.dailyInfo, animateState.isVisibleDaily)
             Spacer(modifier = Modifier.height(24.dp))
         }
 
@@ -127,7 +127,7 @@ fun LandscapeWeatherListScreen(
                 modifier = Modifier.width(280.dp)
             ) {
                 TitleTextView()
-                DailyInfoSection(weatherListInfo.weatherInfo, animateState.isVisibleDaily)
+                DailyInfoSection(weatherListInfo.dailyInfo, animateState.isVisibleDaily)
             }
             Column(
                 verticalArrangement = Arrangement.Center,
