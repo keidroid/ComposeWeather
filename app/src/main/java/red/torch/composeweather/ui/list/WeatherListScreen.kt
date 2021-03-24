@@ -41,7 +41,6 @@ import red.torch.composeweather.ui.list.daily.DailyInfoSection
 import red.torch.composeweather.ui.list.hourly.HourlyInfoSection
 import red.torch.composeweather.ui.theme.VerticalDarkGradientBrush
 import red.torch.composeweather.ui.theme.VerticalLightGradientBrush
-import red.torch.composeweather.viewmodel.ScreenAnimateState
 import red.torch.composeweather.viewmodel.WeatherListViewModel
 
 @Composable
@@ -49,7 +48,6 @@ fun WeatherListScreen(
     viewModel: WeatherListViewModel
 ) {
     val weatherListInfo = viewModel.weatherListInfo.observeAsState(null)
-    val animationState = viewModel.animation.observeAsState(ScreenAnimateState.Invisible)
 
     viewModel.fetchWeatherList()
 
@@ -67,10 +65,10 @@ fun WeatherListScreen(
                 val configuration = LocalConfiguration.current
                 when (configuration.orientation) {
                     Configuration.ORIENTATION_LANDSCAPE -> {
-                        LandscapeWeatherListScreen(weatherListInfo, animationState.value)
+                        LandscapeWeatherListScreen(weatherListInfo)
                     }
                     else -> {
-                        PortraitWeatherListScreen(weatherListInfo, animationState.value)
+                        PortraitWeatherListScreen(weatherListInfo)
                     }
                 }
             } ?: run {
@@ -87,8 +85,7 @@ fun WeatherListScreen(
 
 @Composable
 fun PortraitWeatherListScreen(
-    weatherListInfo: WeatherListInfo,
-    animateState: ScreenAnimateState
+    weatherListInfo: WeatherListInfo
 ) {
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -102,7 +99,7 @@ fun PortraitWeatherListScreen(
         }
 
         item {
-            DailyInfoSection(weatherListInfo.dailyInfo, animateState.isVisibleDaily)
+            DailyInfoSection(weatherListInfo.dailyInfo)
             Spacer(modifier = Modifier.height(24.dp))
         }
 
@@ -114,8 +111,7 @@ fun PortraitWeatherListScreen(
 
 @Composable
 fun LandscapeWeatherListScreen(
-    weatherListInfo: WeatherListInfo,
-    animateState: ScreenAnimateState
+    weatherListInfo: WeatherListInfo
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
@@ -127,7 +123,7 @@ fun LandscapeWeatherListScreen(
                 modifier = Modifier.width(280.dp)
             ) {
                 TitleTextView()
-                DailyInfoSection(weatherListInfo.dailyInfo, animateState.isVisibleDaily)
+                DailyInfoSection(weatherListInfo.dailyInfo)
             }
             Column(
                 verticalArrangement = Arrangement.Center,
