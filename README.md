@@ -6,13 +6,15 @@
 
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
-It is a weather forecast app. Added support for dark mode, landscape mode, and Talkback.
+It is a weather forecast app. Added support for dark mode, landscape mode, and TalkBack.
 
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
-- :white_check_mark: Accessibility (Dark Mode, Landscape Mode, Talkback)
-- :white_check_mark: Testable (Hilt)
+- :white_check_mark: Accessibility
+  - Dark Mode, Landscape Mode, Talkback
+- :white_check_mark: Testable
+  - Android Architecture Component, Hilt, Unit Test, UI Test, (screenshot test only works with Pixel 2 emulator)
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
